@@ -116,11 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 5. SCROLL & HEADER LOCK LOGIC
+    // 5. SCROLL & RIGHT SIDE SOCIAL RIBBON
     // ==========================================
     const header = document.getElementById('main-header');
+    const socialSidebar = document.getElementById('social-sidebar');
     const socialToggleBtn = document.getElementById('social-toggle-btn');
-    const socialRibbon = document.getElementById('social-ribbon');
 
     if (header) {
         window.addEventListener('scroll', () => {
@@ -129,20 +129,22 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 header.classList.remove('scrolled');
             }
-            
             // Close social ribbon on scroll
-            if (socialRibbon) socialRibbon.classList.remove('open');
+            if (socialSidebar && socialSidebar.classList.contains('is-open')) {
+                socialSidebar.classList.remove('is-open');
+            }
         });
     }
 
-    if (socialToggleBtn && socialRibbon) {
+    if (socialToggleBtn && socialSidebar) {
         socialToggleBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            socialRibbon.classList.toggle('open');
+            socialSidebar.classList.toggle('is-open');
         });
+
         document.addEventListener('click', (e) => {
-            if (!socialRibbon.contains(e.target) && !socialToggleBtn.contains(e.target)) {
-                socialRibbon.classList.remove('open');
+            if (!socialSidebar.contains(e.target) && !socialToggleBtn.contains(e.target)) {
+                socialSidebar.classList.remove('is-open');
             }
         });
     }
