@@ -1,5 +1,5 @@
 /* ==========================================
-   GI CREATIVE SPACE - MAIN STYLESHEET
+   GI CREATIVE SPACE - MASTER STYLESHEET
    ========================================== */
 
 :root {
@@ -16,21 +16,18 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
+/* --- ENTRANCE PAGE STYLES --- */
+.entrance-body {
     background-color: var(--space-blue);
     color: var(--ivory);
     font-family: var(--font-english);
     overflow: hidden;
-    transition: background-color 2s ease;
 }
 
-/* --- SPACE ENTRANCE STYLES --- */
 #space-entrance {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; justify-content: center; align-items: center;
     z-index: 9999;
     background: radial-gradient(circle at center, var(--space-blue) 0%, var(--deep-space) 100%);
     transition: opacity 2s ease, transform 2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -61,159 +58,147 @@ body {
 }
 @keyframes drift { from { background-position: 0 0; } to { background-position: -1000px 1000px; } }
 
-/* --- ENTRANCE CONTENT & GIANT LOGO --- */
 .entrance-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 2rem;
-    width: 100%;
+    position: relative; z-index: 2; text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 1rem; padding: 2rem; width: 100%;
 }
 
-.logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2rem;
-}
+.logo-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem; }
 
 .giant-gi-logo {
-    width: 45vmin; /* Takes up 45% of the smallest screen dimension - HUGE */
-    height: 45vmin;
-    max-width: 400px;
-    max-height: 400px;
+    width: 45vmin; height: 45vmin;
+    max-width: 400px; max-height: 400px;
     filter: drop-shadow(0 0 30px var(--gold-glow));
     animation: floatLogo 6s ease-in-out infinite;
 }
-
-@keyframes floatLogo {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
+@keyframes floatLogo { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
 .brand-title {
-    font-size: 1.4rem;
-    font-weight: 400;
-    letter-spacing: 12px; /* Wide tracking for premium feel */
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-top: -10px;
-    margin-left: 12px; /* Offset to balance the tracking */
+    font-size: 1.4rem; font-weight: 400; letter-spacing: 12px;
+    text-transform: uppercase; color: var(--gold);
+    margin-top: -10px; margin-left: 12px;
 }
 
-/* Name Prompt */
 .fade-in { animation: fadeIn 2s ease 1s forwards; opacity: 0; }
 @keyframes fadeIn { to { opacity: 1; } }
 
-.telugu-prompt {
-    font-family: var(--font-telugu);
-    font-size: 2rem;
-    color: var(--ivory);
-    margin-bottom: 0.2rem;
-}
-
-.english-prompt {
-    font-size: 1.1rem;
-    color: rgba(247, 242, 232, 0.5);
-    font-style: italic;
-    margin-bottom: 1.5rem;
-}
+.telugu-prompt { font-family: var(--font-telugu); font-size: 2rem; color: var(--ivory); margin-bottom: 0.2rem; }
+.english-prompt { font-size: 1.1rem; color: rgba(247, 242, 232, 0.5); font-style: italic; margin-bottom: 1.5rem; }
 
 #visitor-form {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid var(--gold);
-    padding-bottom: 0.5rem;
-    transition: border-color 0.3s ease;
+    display: flex; align-items: center; border-bottom: 1px solid var(--gold);
+    padding-bottom: 0.5rem; transition: border-color 0.3s ease;
 }
-
-#visitor-form:focus-within {
-    border-color: var(--ivory);
-    box-shadow: 0 10px 20px -10px var(--gold-glow);
-}
-
+#visitor-form:focus-within { border-color: var(--ivory); box-shadow: 0 10px 20px -10px var(--gold-glow); }
 #visitor-name {
-    background: transparent;
-    border: none;
-    color: var(--ivory);
-    font-family: var(--font-english);
-    font-size: 1.4rem;
-    padding: 0.5rem;
-    outline: none;
-    text-align: center;
-    width: 250px;
+    background: transparent; border: none; color: var(--ivory);
+    font-family: var(--font-english); font-size: 1.4rem;
+    padding: 0.5rem; outline: none; text-align: center; width: 250px;
 }
-
 #visitor-name::placeholder { color: rgba(247, 242, 232, 0.2); }
-
-#visitor-form button {
-    background: transparent;
-    border: none;
-    color: var(--gold);
-    cursor: pointer;
-    padding: 0.5rem;
-    transition: transform 0.3s ease;
-}
+#visitor-form button { background: transparent; border: none; color: var(--gold); cursor: pointer; padding: 0.5rem; transition: transform 0.3s ease; }
 #visitor-form button:hover { transform: translateX(5px); }
 
-/* Welcome Message */
-#personal-welcome {
-    opacity: 0;
-    transform: translateY(15px);
-    transition: opacity 1.5s ease, transform 1.5s ease;
-}
+#personal-welcome { opacity: 0; transform: translateY(15px); transition: opacity 1.5s ease, transform 1.5s ease; }
 #personal-welcome.show { opacity: 1; transform: translateY(0); }
+.welcome-text { font-family: var(--font-telugu); font-size: 3rem; color: var(--gold); margin-bottom: 0.5rem; text-shadow: 0 0 20px var(--gold-glow); }
+.welcome-sub { font-family: var(--font-telugu); font-size: 1.6rem; color: var(--ivory); }
 
-.welcome-text {
-    font-family: var(--font-telugu);
-    font-size: 3rem;
-    color: var(--gold);
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 20px var(--gold-glow);
-}
-
-.welcome-sub {
-    font-family: var(--font-telugu);
-    font-size: 1.6rem;
-    color: var(--ivory);
-}
-
-/* Utilities & Transitions */
 .hidden { display: none !important; }
-.entrance-exit {
-    opacity: 0;
-    transform: scale(4); /* Dramatic zoom into the center GI */
-    pointer-events: none;
-}
+.entrance-exit { opacity: 0; transform: scale(4); pointer-events: none; }
 
-/* --- HOMEPAGE STYLES --- */
-#homepage {
-    position: relative; width: 100vw; height: 100vh; overflow-y: auto;
-    opacity: 0; transition: opacity 2.5s ease;
-    background-color: var(--ivory); color: var(--river-blue);
+/* --- HOMEPAGE BASE --- */
+.homepage-body {
+    background-color: var(--ivory);
+    overflow-x: hidden; overflow-y: auto;
+    color: var(--river-blue);
+    font-family: var(--font-english);
 }
-#homepage.active { opacity: 1; }
-body.homepage-active { overflow: auto; background-color: var(--ivory); }
+.fade-in-page { animation: pageFadeIn 1.5s ease-out forwards; }
+@keyframes pageFadeIn { from { opacity: 0; background-color: var(--deep-space); } to { opacity: 1; background-color: var(--ivory); } }
 
+/* --- HEADER & NAVIGATION --- */
+#main-header {
+    position: fixed; top: 0; left: 0; width: 100%;
+    background: rgba(247, 242, 232, 0.95); backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201, 164, 92, 0.2); z-index: 1000;
+    transition: transform 0.4s ease, background 0.4s ease;
+}
+#main-header.header-hidden { transform: translateY(-100%); }
+
+.header-inner {
+    max-width: 1400px; margin: 0 auto; padding: 1rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.header-logo { text-decoration: none; display: flex; align-items: center; gap: 10px; color: var(--river-blue); }
+.header-logo .logo-text { font-family: var(--font-english); font-size: 1.8rem; font-weight: 600; color: var(--gold); letter-spacing: 2px; }
+.header-logo .brand-name { font-size: 1.1rem; font-weight: 400; letter-spacing: 1px; }
+
+.main-nav ul { list-style: none; display: flex; gap: 2rem; }
+.main-nav a { text-decoration: none; color: var(--river-blue); position: relative; transition: color 0.3s ease; padding-bottom: 5px; }
+.main-nav a:hover, .main-nav a.active { color: var(--gold); }
+
+/* Dropdown */
+.dropdown { position: relative; }
+.dropdown-content {
+    display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    background: var(--ivory); min-width: 220px; box-shadow: 0 10px 30px rgba(6, 26, 43, 0.15);
+    border-top: 3px solid var(--gold); border-radius: 0 0 4px 4px; padding: 1rem 0; z-index: 1001;
+}
+.dropdown:hover .dropdown-content { display: block; animation: slideDown 0.3s ease forwards; }
+@keyframes slideDown { from { opacity: 0; transform: translate(-50%, -10px); } to { opacity: 1; transform: translate(-50%, 0); } }
+.dropdown-content a { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1.5rem; font-size: 1rem; color: var(--river-blue); }
+.dropdown-content a:hover { background: rgba(201, 164, 92, 0.1); }
+
+/* Social Ribbon */
+.header-actions { display: flex; align-items: center; gap: 1.5rem; }
+.social-toggle-container button { background: transparent; border: none; color: var(--river-blue); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0.5rem; transition: transform 0.3s ease; }
+.social-toggle-container button:hover { color: var(--gold); }
+.social-ribbon {
+    position: absolute; top: 100%; right: 2rem; background: var(--ivory);
+    box-shadow: 0 10px 30px rgba(6, 26, 43, 0.15); border-radius: 0 0 4px 4px; padding: 1rem;
+    display: flex; flex-direction: column; gap: 1rem; opacity: 0; pointer-events: none;
+    transform: translateY(-10px); transition: all 0.3s ease; border-top: 3px solid var(--gold);
+}
+.social-ribbon.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.social-ribbon a { text-decoration: none; color: var(--river-blue); font-family: var(--font-english); font-weight: 600; font-size: 1.2rem; text-align: center; transition: color 0.3s ease; }
+.social-ribbon a:hover { color: var(--gold); }
+
+/* --- STRICT LANGUAGE TOGGLE SYSTEM --- */
+.lang-en { display: none !important; }
+.lang-te { display: inline-block; }
+body.english-mode .lang-te { display: none !important; }
+body.english-mode .lang-en { display: inline-block !important; }
+
+.main-nav a .lang-te { font-family: var(--font-telugu); font-size: 1.3rem; }
+.main-nav a .lang-en { font-family: var(--font-english); font-size: 1.1rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
+
+.lang-toggle {
+    position: relative; background: rgba(31, 94, 122, 0.05); border: 1px solid rgba(201, 164, 92, 0.4);
+    border-radius: 20px; display: flex; align-items: center; padding: 4px; cursor: pointer;
+    width: 86px; height: 36px; outline: none; transition: all 0.3s ease;
+}
+.lang-toggle:hover { border-color: var(--gold); box-shadow: 0 0 10px rgba(201, 164, 92, 0.2); }
+.lang-option { position: relative; z-index: 2; flex: 1; text-align: center; font-size: 0.8rem; font-weight: 600; color: var(--river-blue); transition: color 0.3s ease; }
+.te-option { font-family: var(--font-telugu); font-size: 1rem; }
+.lang-option.active { color: var(--deep-space) !important; }
+.lang-slider {
+    position: absolute; top: 4px; left: 4px; width: 36px; height: 26px;
+    background: var(--gold); border-radius: 15px; z-index: 1;
+    transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1); box-shadow: 0 2px 5px rgba(201, 164, 92, 0.3);
+}
+body.english-mode .lang-slider { transform: translateX(38px); }
+
+/* --- HERO SECTION --- */
 .hero-section {
-    position: relative; height: 100vh;
-    display: flex; justify-content: center; align-items: center; text-align: center;
+    position: relative; height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center;
     background: linear-gradient(to bottom, var(--sky-blue) 0%, #6FA3C7 40%, var(--river-blue) 100%);
     color: var(--ivory);
 }
-.hero-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle, transparent 20%, rgba(6, 26, 43, 0.4) 100%);
-}
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, rgba(6, 26, 43, 0.4) 100%); }
 .hero-content { position: relative; z-index: 2; padding: 2rem; }
-.telugu-headline {
-    font-family: var(--font-telugu); font-size: 3.5rem; line-height: 1.2;
-    text-shadow: 0 4px 12px rgba(6, 26, 43, 0.5); margin-bottom: 1.5rem;
-}
+.telugu-headline { font-family: var(--font-telugu); font-size: 3.5rem; line-height: 1.2; text-shadow: 0 4px 12px rgba(6, 26, 43, 0.5); margin-bottom: 1.5rem; }
 .english-subhead { font-size: 1.5rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--gold); }
 .brand-identity { font-style: italic; font-size: 1.2rem; color: rgba(247, 242, 232, 0.8); }
 
@@ -233,7 +218,7 @@ body.homepage-active { overflow: auto; background-color: var(--ivory); }
 .world-card h3 { font-size: 1.8rem; margin-bottom: 1rem; font-weight: 600; letter-spacing: 1px; }
 .world-card p { font-size: 1rem; line-height: 1.6; opacity: 0.8; }
 
-/* Specific World Themes */
+/* World Themes */
 .world-writings { background-color: #F0F7EE; color: #2E4A32; border-top: 4px solid #A3C9A8; }
 .world-writings .element-tag { background-color: #E8F3D6; color: #2E4A32; }
 .world-devotional { background-color: #FFF9E6; color: #4A1A1A; border-top: 4px solid #C02F2F; }
@@ -245,19 +230,47 @@ body.homepage-active { overflow: auto; background-color: var(--ivory); }
 .world-space { background-color: var(--space-blue); color: var(--ivory); border-top: 4px solid var(--gold); }
 .world-space .element-tag { background-color: rgba(201, 164, 92, 0.2); color: var(--gold); }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .giant-gi-logo { width: 60vmin; height: 60vmin; }
-    .brand-title { font-size: 1.1rem; letter-spacing: 8px; }
-    .telugu-prompt { font-size: 1.6rem; }
-    .welcome-text { font-size: 2.2rem; }
-    .welcome-sub { font-size: 1.3rem; }
+/* ==========================================
+   MOBILE RESPONSIVE & PWA STYLES
+   ========================================== */
+.mobile-menu-btn, .mobile-only-toggle { display: none; }
+
+@media (max-width: 900px) {
+    .header-inner { padding: 1rem 1.5rem; justify-content: space-between; }
+    .mobile-menu-btn { display: block; background: transparent; border: none; cursor: pointer; z-index: 1001; }
+    .desktop-only-actions { display: none; }
+
+    .main-nav {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+        background: rgba(247, 242, 232, 0.98); backdrop-filter: blur(15px);
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        transform: translateY(-100%); transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1); z-index: 1000;
+    }
+    .main-nav.mobile-open { transform: translateY(0); }
+    .main-nav ul { flex-direction: column; align-items: center; gap: 2rem; width: 100%; }
+    .main-nav a { font-size: 1.8rem; }
+    .main-nav a .lang-en { font-size: 1.4rem; }
+
+    .dropdown-content { position: relative; top: 0; left: 0; transform: none; box-shadow: none; background: transparent; display: none; text-align: center; border: none; padding: 1rem 0; }
+    .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content { display: block; }
+    .dropdown-content a { justify-content: center; gap: 10px; padding: 0.5rem; }
+
+    .mobile-only-toggle { display: flex; margin-top: 2rem; }
+
+    .social-ribbon { right: 50%; transform: translate(50%, -10px); width: 80%; }
+    .social-ribbon.open { transform: translate(50%, 0); }
+
     .telugu-headline { font-size: 2.5rem; }
     .five-worlds-section { padding: 4rem 1rem; }
     .worlds-grid { grid-template-columns: 1fr; }
+    .giant-gi-logo { width: 60vmin; height: 60vmin; }
+    .telugu-prompt { font-size: 1.6rem; }
+    .welcome-text { font-size: 2.2rem; }
 }
 
-/* Reduced Motion */
+button, a { -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+
 @media (prefers-reduced-motion: reduce) {
     .stars, .stars2, .giant-gi-logo { animation: none; }
     .entrance-exit { transform: none; }
