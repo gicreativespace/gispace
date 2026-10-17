@@ -11,7 +11,6 @@
     --river-blue: #1F5E7A;
     --sky-blue: #A9D6E5;
     
-    /* Premium Telugu Fonts */
     --font-telugu: 'Peddana', 'Ramabhadra', serif;
     --font-telugu-bold: 'Ramabhadra', 'Peddana', serif;
     --font-english: 'Cormorant Garamond', serif;
@@ -70,7 +69,6 @@
 }
 
 .logo-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem; }
-
 .giant-gi-logo {
     width: 45vmin; height: 45vmin;
     max-width: 400px; max-height: 400px;
@@ -78,12 +76,7 @@
     animation: floatLogo 6s ease-in-out infinite;
 }
 @keyframes floatLogo { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-
-.brand-title {
-    font-size: 1.4rem; font-weight: 400; letter-spacing: 12px;
-    text-transform: uppercase; color: var(--gold);
-    margin-top: -10px; margin-left: 12px;
-}
+.brand-title { font-size: 1.4rem; font-weight: 400; letter-spacing: 12px; text-transform: uppercase; color: var(--gold); margin-top: -10px; margin-left: 12px; }
 
 .fade-in { animation: fadeIn 2s ease 1s forwards; opacity: 0; }
 @keyframes fadeIn { to { opacity: 1; } }
@@ -139,44 +132,27 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 1rem 0;
 }
-
-/* Scrolled state for the locked header */
 #main-header.scrolled {
     padding: 0.5rem 0;
     background: rgba(247, 242, 232, 0.98);
     box-shadow: 0 4px 30px rgba(6, 26, 43, 0.08);
     border-bottom: 1px solid rgba(201, 164, 92, 0.3);
 }
-
 .header-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    max-width: 1400px; margin: 0 auto; padding: 0 2rem;
+    display: flex; justify-content: space-between; align-items: center;
     transition: all 0.4s ease;
 }
+.header-logo { text-decoration: none; display: flex; align-items: center; gap: 12px; color: var(--river-blue); }
+.header-logo .logo-img { height: 45px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); transition: transform 0.3s ease; }
+.header-logo:hover .logo-img { transform: scale(1.05); }
+.header-logo .brand-name { font-size: 1.2rem; font-weight: 400; letter-spacing: 1.5px; font-family: var(--font-english); color: var(--river-blue); }
 
-.header-logo { text-decoration: none; display: flex; align-items: center; gap: 10px; color: var(--river-blue); }
-.header-logo .logo-text { font-family: var(--font-english); font-size: 1.8rem; font-weight: 600; color: var(--gold); letter-spacing: 2px; transition: text-shadow 0.3s ease; }
-.header-logo:hover .logo-text { text-shadow: 0 0 15px rgba(201, 164, 92, 0.5); }
-.header-logo .brand-name { font-size: 1.1rem; font-weight: 400; letter-spacing: 1px; }
-
-/* Navigation */
 .main-nav ul { list-style: none; display: flex; gap: 2rem; }
-.main-nav a {
-    text-decoration: none; color: var(--river-blue); position: relative;
-    transition: color 0.3s ease; padding-bottom: 5px; display: inline-block;
-}
-.main-nav a::after {
-    content: ''; position: absolute; width: 0; height: 2px; bottom: 0;
-    left: 50%; background: var(--gold); transition: all 0.3s ease;
-    transform: translateX(-50%); border-radius: 2px;
-}
+.main-nav a { text-decoration: none; color: var(--river-blue); position: relative; transition: color 0.3s ease; padding-bottom: 5px; display: inline-block; }
+.main-nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%; background: var(--gold); transition: all 0.3s ease; transform: translateX(-50%); border-radius: 2px; }
 .main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
 .main-nav a:hover, .main-nav a.active { color: var(--gold); }
-
 .main-nav a .lang-te { font-family: var(--font-telugu-bold); font-size: 1.15rem; letter-spacing: 0.5px; }
 .main-nav a .lang-en { font-family: var(--font-english); font-size: 1.1rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
 
@@ -192,23 +168,10 @@
 .dropdown-content a { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1.5rem; font-size: 1rem; color: var(--river-blue); }
 .dropdown-content a:hover { background: rgba(201, 164, 92, 0.1); }
 
-/* Social Ribbon */
-.header-actions { display: flex; align-items: center; gap: 1.5rem; }
-.social-toggle-container button { background: transparent; border: none; color: var(--river-blue); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0.5rem; transition: transform 0.3s ease; }
-.social-toggle-container button:hover { color: var(--gold); }
-.social-ribbon {
-    position: absolute; top: 100%; right: 2rem; background: var(--ivory);
-    box-shadow: 0 10px 30px rgba(6, 26, 43, 0.15); border-radius: 0 0 4px 4px; padding: 1rem;
-    display: flex; flex-direction: column; gap: 1rem; opacity: 0; pointer-events: none;
-    transform: translateY(-10px); transition: all 0.3s ease; border-top: 3px solid var(--gold);
-}
-.social-ribbon.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
-.social-ribbon a { text-decoration: none; color: var(--river-blue); font-family: var(--font-english); font-weight: 600; font-size: 1.2rem; text-align: center; transition: color 0.3s ease; }
-.social-ribbon a:hover { color: var(--gold); }
-
 /* ==========================================
    4. LANGUAGE TOGGLE SYSTEM
    ========================================== */
+.header-actions { display: flex; align-items: center; gap: 1.5rem; }
 .lang-en { display: none !important; }
 .lang-te { display: inline-block; }
 body.english-mode .lang-te { display: none !important; }
@@ -231,19 +194,21 @@ body.english-mode .lang-en { display: inline-block !important; }
 body.english-mode .lang-slider { transform: translateX(38px); }
 
 /* ==========================================
-   5. HERO SECTION
+   5. HERO WALLPAPER SECTION
    ========================================== */
 .hero-section {
     position: relative; height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center;
-    background: linear-gradient(to bottom, var(--sky-blue) 0%, #6FA3C7 40%, var(--river-blue) 100%);
+    background-color: var(--river-blue); /* Fallback */
+    background-image: linear-gradient(rgba(6, 26, 43, 0.6), rgba(6, 26, 43, 0.4)), url('../assets/images/hero/godavari-hero.jpg'); /* YOUR WALLPAPER */
+    background-size: cover; background-position: center; background-attachment: fixed;
     color: var(--ivory);
-    padding-top: 80px; /* Prevents header overlap */
+    padding-top: 80px;
 }
-.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, rgba(6, 26, 43, 0.4) 100%); }
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 30%, rgba(6, 26, 43, 0.5) 100%); }
 .hero-content { position: relative; z-index: 2; padding: 2rem; }
-.telugu-headline { font-family: var(--font-telugu-bold); font-size: 3.5rem; line-height: 1.2; text-shadow: 0 4px 12px rgba(6, 26, 43, 0.5); margin-bottom: 1.5rem; }
-.english-subhead { font-size: 1.5rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--gold); }
-.brand-identity { font-style: italic; font-size: 1.2rem; color: rgba(247, 242, 232, 0.8); }
+.telugu-headline { font-family: var(--font-telugu-bold); font-size: 3.5rem; line-height: 1.2; text-shadow: 0 4px 15px rgba(6, 26, 43, 0.8); margin-bottom: 1.5rem; color: #fff; }
+.english-subhead { font-size: 1.5rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--gold); font-weight: 600; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+.brand-identity { font-style: italic; font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
 
 /* ==========================================
    6. FIVE WORLDS SECTION
@@ -261,9 +226,8 @@ body.english-mode .lang-slider { transform: translateX(38px); }
 .world-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(6, 26, 43, 0.1); }
 .world-card .element-tag { font-family: var(--font-telugu-bold); font-size: 1.1rem; margin-bottom: 1rem; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 20px; font-weight: 500; }
 .world-card h3 { font-size: 1.8rem; margin-bottom: 1rem; font-weight: 600; letter-spacing: 1px; font-family: var(--font-english); }
-.world-card p { font-size: 1rem; line-height: 1.6; opacity: 0.8; font-family: var(--font-telugu); font-size: 1.3rem; }
+.world-card p { font-size: 1.3rem; line-height: 1.5; opacity: 0.8; font-family: var(--font-telugu); }
 
-/* World Themes */
 .world-writings { background-color: #F0F7EE; color: #2E4A32; border-top: 4px solid #A3C9A8; }
 .world-writings .element-tag { background-color: #E8F3D6; color: #2E4A32; }
 .world-devotional { background-color: #FFF9E6; color: #4A1A1A; border-top: 4px solid #C02F2F; }
@@ -276,27 +240,78 @@ body.english-mode .lang-slider { transform: translateX(38px); }
 .world-space .element-tag { background-color: rgba(201, 164, 92, 0.2); color: var(--gold); }
 
 /* ==========================================
-   7. FOOTER STYLES
+   7. PREMIUM RIGHT SOCIAL RIBBON
    ========================================== */
-.main-footer {
-    background-color: var(--space-blue);
-    color: var(--ivory);
-    padding: 4rem 2rem 2rem;
-    border-top: 3px solid var(--gold);
+.social-sidebar {
+    position: fixed; top: 50%; right: 0; transform: translateY(-50%);
+    z-index: 2000; display: flex; align-items: center; justify-content: flex-end;
 }
-.footer-grid {
-    max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; margin-bottom: 3rem;
+
+/* The Glowing Tab Button */
+.social-toggle-btn {
+    position: relative; z-index: 2;
+    background: var(--ivory);
+    border: 1px solid rgba(201, 164, 92, 0.5);
+    border-right: none;
+    padding: 24px 10px;
+    border-radius: 8px 0 0 8px; /* Rounded on the left */
+    cursor: pointer; color: var(--river-blue);
+    box-shadow: -2px 0 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    display: flex; align-items: center; justify-content: center;
 }
+.social-toggle-btn:hover {
+    color: var(--gold); background: #fff;
+    box-shadow: -5px 0 20px rgba(201, 164, 92, 0.3);
+    border-color: var(--gold);
+}
+.social-toggle-btn svg { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.social-sidebar.is-open .social-toggle-btn svg { transform: rotate(180deg); }
+
+/* The Sliding Panel */
+.social-sidebar .social-ribbon {
+    position: absolute; right: 0; top: 50%;
+    transform: translateY(-50%) translateX(100%); /* Hidden to the right */
+    background: rgba(247, 242, 232, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex; flex-direction: column; gap: 1.5rem;
+    padding: 1.5rem 1.2rem;
+    border: 1px solid rgba(201, 164, 92, 0.4); border-right: none;
+    border-radius: 8px 0 0 8px;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+/* Slide out to the left */
+.social-sidebar.is-open .social-ribbon {
+    transform: translateY(-50%) translateX(-40px); /* -40px is the width of the button */
+}
+
+.social-sidebar .social-ribbon a {
+    color: var(--river-blue); text-decoration: none;
+    transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;
+    padding: 8px; border-radius: 50%; background: rgba(31, 94, 122, 0.05);
+}
+.social-sidebar .social-ribbon a:hover {
+    color: var(--gold); background: rgba(201, 164, 92, 0.15); transform: scale(1.1);
+}
+
+/* ==========================================
+   8. FOOTER & GODARODU FAB
+   ========================================== */
+.main-footer { background-color: var(--space-blue); color: var(--ivory); padding: 4rem 2rem 2rem; border-top: 3px solid var(--gold); }
+.footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; margin-bottom: 3rem; }
 .footer-brand h2 { font-family: var(--font-english); font-size: 2rem; color: var(--gold); margin-bottom: 0.5rem; letter-spacing: 2px; }
 .footer-tagline { font-style: italic; color: rgba(247, 242, 232, 0.7); margin-bottom: 1.5rem; }
-.footer-desc { font-size: 0.95rem; line-height: 1.6; color: rgba(247, 242, 232, 0.8); font-family: var(--font-telugu); font-size: 1.2rem; }
+.footer-desc { font-size: 1.2rem; line-height: 1.6; color: rgba(247, 242, 232, 0.8); font-family: var(--font-telugu); }
 .footer-links h3, .footer-contact h3 { font-family: var(--font-telugu-bold); font-size: 1.3rem; color: var(--gold); margin-bottom: 1.5rem; font-weight: 500; }
 .footer-links ul { list-style: none; }
 .footer-links li { margin-bottom: 0.8rem; }
-.footer-links a { color: var(--ivory); text-decoration: none; font-size: 1rem; transition: color 0.3s ease, padding-left 0.3s ease; font-family: var(--font-telugu); font-size: 1.2rem; }
+.footer-links a { color: var(--ivory); text-decoration: none; font-size: 1.2rem; transition: color 0.3s ease, padding-left 0.3s ease; font-family: var(--font-telugu); }
 .footer-links a:hover { color: var(--gold); padding-left: 5px; }
 .footer-contact { display: flex; flex-direction: column; gap: 1rem; }
-.footer-btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0.8rem 1.5rem; border-radius: 4px; text-decoration: none; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; font-family: var(--font-telugu-bold); font-size: 1.1rem; }
+.footer-btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0.8rem 1.5rem; border-radius: 4px; text-decoration: none; font-size: 1.1rem; font-weight: 600; transition: all 0.3s ease; font-family: var(--font-telugu-bold); }
 .call-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); }
 .call-btn:hover { background: var(--gold); color: var(--space-blue); }
 .wa-btn { background: #25D366; border: 1px solid #25D366; color: #fff; }
@@ -309,24 +324,14 @@ body.english-mode .lang-slider { transform: translateX(38px); }
 .footer-legal p { font-size: 0.9rem; color: rgba(247, 242, 232, 0.6); margin-bottom: 0.3rem; }
 .footer-signature { font-family: var(--font-english); font-weight: 600; color: var(--gold) !important; letter-spacing: 1px; }
 
-/* ==========================================
-   8. GODARODU FLOATING BUTTON
-   ========================================== */
-.godarodu-fab {
-    position: fixed; bottom: 30px; right: 30px;
-    display: flex; align-items: center; gap: 12px;
-    background: var(--ivory); padding: 8px 20px 8px 8px; border-radius: 50px;
-    text-decoration: none; box-shadow: 0 10px 25px rgba(6, 26, 43, 0.2);
-    border: 1px solid rgba(201, 164, 92, 0.4); z-index: 9999;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+.godarodu-fab { position: fixed; bottom: 30px; right: 30px; display: flex; align-items: center; gap: 12px; background: var(--ivory); padding: 8px 20px 8px 8px; border-radius: 50px; text-decoration: none; box-shadow: 0 10px 25px rgba(6, 26, 43, 0.2); border: 1px solid rgba(201, 164, 92, 0.4); z-index: 9999; transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .godarodu-fab:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(6, 26, 43, 0.3); }
 .godarodu-avatar { width: 45px; height: 45px; background: var(--gold); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: var(--space-blue); font-family: var(--font-telugu-bold); font-size: 1.5rem; }
 .godarodu-text { color: var(--river-blue); font-family: var(--font-telugu-bold); font-size: 1.1rem; }
 .godarodu-text .lang-en { font-family: var(--font-english); font-size: 0.9rem; letter-spacing: 1px; }
 
 /* ==========================================
-   9. MOBILE RESPONSIVE & PWA STYLES
+   9. MOBILE RESPONSIVE & PWA
    ========================================== */
 .mobile-menu-btn, .mobile-only-toggle { display: none; }
 
@@ -335,12 +340,7 @@ body.english-mode .lang-slider { transform: translateX(38px); }
     .mobile-menu-btn { display: block; background: transparent; border: none; cursor: pointer; z-index: 1001; }
     .desktop-only-actions { display: none; }
 
-    .main-nav {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-        background: rgba(247, 242, 232, 0.98); backdrop-filter: blur(15px);
-        display: flex; flex-direction: column; justify-content: center; align-items: center;
-        transform: translateY(-100%); transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1); z-index: 1000;
-    }
+    .main-nav { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(247, 242, 232, 0.98); backdrop-filter: blur(15px); display: flex; flex-direction: column; justify-content: center; align-items: center; transform: translateY(-100%); transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1); z-index: 1000; }
     .main-nav.mobile-open { transform: translateY(0); }
     .main-nav ul { flex-direction: column; align-items: center; gap: 2rem; width: 100%; }
     .main-nav a { font-size: 1.8rem; }
@@ -351,16 +351,18 @@ body.english-mode .lang-slider { transform: translateX(38px); }
     .dropdown-content a { justify-content: center; gap: 10px; padding: 0.5rem; }
 
     .mobile-only-toggle { display: flex; margin-top: 2rem; }
-    .social-ribbon { right: 50%; transform: translate(50%, -10px); width: 80%; }
-    .social-ribbon.open { transform: translate(50%, 0); }
+    
+    /* Hide the right-side ribbon on mobile to save space */
+    .social-sidebar { display: none; }
 
-    .hero-section { padding-top: 60px; }
+    .hero-section { padding-top: 60px; background-attachment: scroll; }
     .telugu-headline { font-size: 2.5rem; }
     .five-worlds-section { padding: 4rem 1rem; }
     .worlds-grid { grid-template-columns: 1fr; }
     .giant-gi-logo { width: 60vmin; height: 60vmin; }
     .telugu-prompt { font-size: 1.6rem; }
     .welcome-text { font-size: 2.2rem; }
+    .header-logo .logo-img { height: 35px; }
 
     .footer-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
     .footer-contact { align-items: center; }
