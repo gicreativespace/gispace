@@ -1,6 +1,7 @@
 const CACHE_VERSION = 'v3';
 const CACHE_NAME = `gi-space-${CACHE_VERSION}`;
 
+// ONLY put files here that ACTUALLY exist right now
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -10,33 +11,32 @@ const STATIC_ASSETS = [
   './css/writings.css',
   './css/devotional.css',
   './js/main.js',
-  './js/godarodu.js',
-  './pages/gi_writings.html',
-  './pages/gi_devotional.html',
-  './pages/godarodu.html',
-  './pages/about.html',
-  './pages/contact.html',
-  './pages/gi_digital.html',
-  './pages/gi_education.html',
-  './pages/gi_space.html'
+  './js/godarodu.js'
+  // Removed missing pages/icons for now so caching doesn't fail
 ];
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(STATIC_ASSETS).catch(e => console.warn('Cache partial fail:', e)))
+    caches.open(CACHE_NAME).then(async (cache) => {
+      // Loop through each file individually so one 404 doesn't break everything
+      for (const asset of STATIC_ASSETS) {
+        try {
+          await cache.add(asset);
+        } catch (err) {
+          console.warn(`Skipping missing file: ${asset}`);
+        }
+      }
+    })
   );
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     (async () => {
-      // Delete ALL caches (nuclear option)
+      // Delete ALL old caches
       const keys = await caches.keys();
       await Promise.all(keys.map(k => caches.delete(k)));
-      
-      // Claim all clients
       await self.clients.claim();
     })()
   );
@@ -52,7 +52,7 @@ self.addEventListener('fetch', (event) => {
   const isCodeFile = /\.(css|js|json)$/i.test(url.pathname);
 
   if (isHTML || isCodeFile) {
-    // NETWORK FIRST
+    // NETWORK FIRST (Always get the newest version, bypass old cache)
     event.respondWith(
       fetch(request, { cache: 'no-store' })
         .then(res => {
@@ -63,7 +63,7 @@ self.addEventListener('fetch', (event) => {
         .catch(() => caches.match(request))
     );
   } else {
-    // CACHE FIRST for assets
+    // CACHE FIRST for assets (images, fonts)
     event.respondWith(
       caches.match(request).then(cached =>
         cached || fetch(request).then(res => {
