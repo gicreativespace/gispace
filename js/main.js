@@ -1,4 +1,45 @@
 // ==========================================
+// 0. AUTO CACHE CLEARING SYSTEM
+// ==========================================
+(async function autoClearCache() {
+    try {
+        // Fetch the version file (with a timestamp to prevent it from being cached)
+        const res = await fetch(`/version.json?t=${Date.now()}`, { cache: 'no-store' });
+        const data = await res.json();
+        
+        const currentVersion = localStorage.getItem('gi_app_version');
+        
+        if (currentVersion !== data.version) {
+            console.log(`Updating app from ${currentVersion} to ${data.version}...`);
+            
+            // Save new version
+            localStorage.setItem('gi_app_version', data.version);
+            
+            // Unregister all Service Workers
+            if ('serviceWorker' in navigator) {
+                const regs = await navigator.serviceWorker.getRegistrations();
+                for (let reg of regs) await reg.unregister();
+            }
+            
+            // Delete all browser caches
+            if ('caches' in window) {
+                const keys = await caches.keys();
+                for (let key of keys) await caches.delete(key);
+            }
+            
+            // Force a hard reload from the server
+            window.location.reload(true);
+        }
+    } catch (err) {
+        console.log('Version check skipped:', err);
+    }
+})();
+// ==========================================
+// 1. PWA SERVICE WORKER REGISTRATION
+// ==========================================
+// ... your existing Service Worker code continues below ...
+
+// ==========================================
 // 1. PWA SERVICE WORKER (Isolated so it never breaks the site)
 // ==========================================
 const SW_VERSION = 'v5'; // Must match sw.js
