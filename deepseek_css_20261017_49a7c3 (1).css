@@ -1,0 +1,265 @@
+/* ==========================================
+   GI CREATIVE SPACE - MAIN STYLESHEET
+   ========================================== */
+
+:root {
+    --ivory: #F7F2E8;
+    --space-blue: #061A2B;
+    --deep-space: #020A12;
+    --gold: #C9A45C;
+    --gold-glow: rgba(201, 164, 92, 0.4);
+    --river-blue: #1F5E7A;
+    --sky-blue: #A9D6E5;
+    --font-telugu: 'Gurajada', 'Ramabhadra', serif;
+    --font-english: 'Cormorant Garamond', serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--space-blue);
+    color: var(--ivory);
+    font-family: var(--font-english);
+    overflow: hidden;
+    transition: background-color 2s ease;
+}
+
+/* --- SPACE ENTRANCE STYLES --- */
+#space-entrance {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    background: radial-gradient(circle at center, var(--space-blue) 0%, var(--deep-space) 100%);
+    transition: opacity 2s ease, transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.space-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; }
+.stars, .stars2 {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-repeat: repeat; opacity: 0.8; animation: drift 200s linear infinite;
+}
+.stars {
+    background-image: radial-gradient(1px 1px at 20px 30px, var(--ivory), rgba(0,0,0,0)),
+                      radial-gradient(1.5px 1.5px at 40px 70px, var(--ivory), rgba(0,0,0,0)),
+                      radial-gradient(1px 1px at 50px 160px, var(--ivory), rgba(0,0,0,0)),
+                      radial-gradient(2px 2px at 90px 40px, var(--ivory), rgba(0,0,0,0));
+    background-size: 200px 200px;
+}
+.stars2 {
+    background-image: radial-gradient(1px 1px at 10px 10px, var(--gold), rgba(0,0,0,0)),
+                      radial-gradient(1.5px 1.5px at 150px 150px, var(--ivory), rgba(0,0,0,0));
+    background-size: 300px 300px; animation-duration: 300s;
+}
+.nebula {
+    position: absolute; top: 50%; left: 50%; width: 90vw; height: 90vw;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(31, 94, 122, 0.15) 0%, transparent 60%);
+    border-radius: 50%; filter: blur(60px);
+}
+@keyframes drift { from { background-position: 0 0; } to { background-position: -1000px 1000px; } }
+
+/* --- ENTRANCE CONTENT & GIANT LOGO --- */
+.entrance-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    width: 100%;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.giant-gi-logo {
+    width: 45vmin; /* Takes up 45% of the smallest screen dimension - HUGE */
+    height: 45vmin;
+    max-width: 400px;
+    max-height: 400px;
+    filter: drop-shadow(0 0 30px var(--gold-glow));
+    animation: floatLogo 6s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.brand-title {
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 12px; /* Wide tracking for premium feel */
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: -10px;
+    margin-left: 12px; /* Offset to balance the tracking */
+}
+
+/* Name Prompt */
+.fade-in { animation: fadeIn 2s ease 1s forwards; opacity: 0; }
+@keyframes fadeIn { to { opacity: 1; } }
+
+.telugu-prompt {
+    font-family: var(--font-telugu);
+    font-size: 2rem;
+    color: var(--ivory);
+    margin-bottom: 0.2rem;
+}
+
+.english-prompt {
+    font-size: 1.1rem;
+    color: rgba(247, 242, 232, 0.5);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+#visitor-form {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 0.5rem;
+    transition: border-color 0.3s ease;
+}
+
+#visitor-form:focus-within {
+    border-color: var(--ivory);
+    box-shadow: 0 10px 20px -10px var(--gold-glow);
+}
+
+#visitor-name {
+    background: transparent;
+    border: none;
+    color: var(--ivory);
+    font-family: var(--font-english);
+    font-size: 1.4rem;
+    padding: 0.5rem;
+    outline: none;
+    text-align: center;
+    width: 250px;
+}
+
+#visitor-name::placeholder { color: rgba(247, 242, 232, 0.2); }
+
+#visitor-form button {
+    background: transparent;
+    border: none;
+    color: var(--gold);
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+}
+#visitor-form button:hover { transform: translateX(5px); }
+
+/* Welcome Message */
+#personal-welcome {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+#personal-welcome.show { opacity: 1; transform: translateY(0); }
+
+.welcome-text {
+    font-family: var(--font-telugu);
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px var(--gold-glow);
+}
+
+.welcome-sub {
+    font-family: var(--font-telugu);
+    font-size: 1.6rem;
+    color: var(--ivory);
+}
+
+/* Utilities & Transitions */
+.hidden { display: none !important; }
+.entrance-exit {
+    opacity: 0;
+    transform: scale(4); /* Dramatic zoom into the center GI */
+    pointer-events: none;
+}
+
+/* --- HOMEPAGE STYLES --- */
+#homepage {
+    position: relative; width: 100vw; height: 100vh; overflow-y: auto;
+    opacity: 0; transition: opacity 2.5s ease;
+    background-color: var(--ivory); color: var(--river-blue);
+}
+#homepage.active { opacity: 1; }
+body.homepage-active { overflow: auto; background-color: var(--ivory); }
+
+.hero-section {
+    position: relative; height: 100vh;
+    display: flex; justify-content: center; align-items: center; text-align: center;
+    background: linear-gradient(to bottom, var(--sky-blue) 0%, #6FA3C7 40%, var(--river-blue) 100%);
+    color: var(--ivory);
+}
+.hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 20%, rgba(6, 26, 43, 0.4) 100%);
+}
+.hero-content { position: relative; z-index: 2; padding: 2rem; }
+.telugu-headline {
+    font-family: var(--font-telugu); font-size: 3.5rem; line-height: 1.2;
+    text-shadow: 0 4px 12px rgba(6, 26, 43, 0.5); margin-bottom: 1.5rem;
+}
+.english-subhead { font-size: 1.5rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--gold); }
+.brand-identity { font-style: italic; font-size: 1.2rem; color: rgba(247, 242, 232, 0.8); }
+
+/* --- FIVE WORLDS SECTION --- */
+.five-worlds-section { padding: 6rem 2rem; background-color: var(--ivory); display: flex; flex-direction: column; align-items: center; }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-header .telugu-title { font-family: var(--font-telugu); font-size: 3rem; color: var(--river-blue); margin-bottom: 0.5rem; }
+.section-header .english-subtitle { font-size: 1.2rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+.worlds-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; width: 100%; }
+.world-card {
+    text-decoration: none; padding: 3rem 2rem; border-radius: 4px; display: flex; flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    position: relative; overflow: hidden; border: 1px solid rgba(0,0,0,0.05);
+}
+.world-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(6, 26, 43, 0.1); }
+.world-card .element-tag { font-family: var(--font-telugu); font-size: 1.1rem; margin-bottom: 1rem; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 20px; font-weight: 500; }
+.world-card h3 { font-size: 1.8rem; margin-bottom: 1rem; font-weight: 600; letter-spacing: 1px; }
+.world-card p { font-size: 1rem; line-height: 1.6; opacity: 0.8; }
+
+/* Specific World Themes */
+.world-writings { background-color: #F0F7EE; color: #2E4A32; border-top: 4px solid #A3C9A8; }
+.world-writings .element-tag { background-color: #E8F3D6; color: #2E4A32; }
+.world-devotional { background-color: #FFF9E6; color: #4A1A1A; border-top: 4px solid #C02F2F; }
+.world-devotional .element-tag { background-color: #FFE4E1; color: #C02F2F; }
+.world-digital { background-color: #FFFFFF; color: #1A3A4A; border-top: 4px solid #87CEEB; }
+.world-digital .element-tag { background-color: #F0F8FF; color: #1F5E7A; }
+.world-education { background-color: #FFF3E0; color: #4A2B1A; border-top: 4px solid #E8B07A; }
+.world-education .element-tag { background-color: #FFE0B2; color: #8C4F36; }
+.world-space { background-color: var(--space-blue); color: var(--ivory); border-top: 4px solid var(--gold); }
+.world-space .element-tag { background-color: rgba(201, 164, 92, 0.2); color: var(--gold); }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .giant-gi-logo { width: 60vmin; height: 60vmin; }
+    .brand-title { font-size: 1.1rem; letter-spacing: 8px; }
+    .telugu-prompt { font-size: 1.6rem; }
+    .welcome-text { font-size: 2.2rem; }
+    .welcome-sub { font-size: 1.3rem; }
+    .telugu-headline { font-size: 2.5rem; }
+    .five-worlds-section { padding: 4rem 1rem; }
+    .worlds-grid { grid-template-columns: 1fr; }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .stars, .stars2, .giant-gi-logo { animation: none; }
+    .entrance-exit { transform: none; }
+    #space-entrance, #homepage { transition: opacity 0.5s ease; }
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GI Creative Space | Inspired by Tradition</title>
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Google Fonts for Premium Telugu and English Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Gurajada&family=Ramabhadra&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ==========================================
+         SPACE ENTRANCE (Visible on load)
+    =========================================== -->
+    <div id="space-entrance" class="entrance-active">
+        <div class="space-bg">
+            <div class="stars"></div>
+            <div class="stars2"></div>
+            <div class="nebula"></div>
+        </div>
+
+        <div class="entrance-content">
+            <!-- GIANT GI MONOGRAM -->
+            <div class="logo-container">
+                <svg class="giant-gi-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Orbital Rings -->
+                    <ellipse cx="100" cy="100" rx="90" ry="30" transform="rotate(-35 100 100)" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.6"/>
+                    <ellipse cx="100" cy="100" rx="90" ry="30" transform="rotate(35 100 100)" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.6"/>
+                    <ellipse cx="100" cy="100" rx="80" ry="80" fill="none" stroke="var(--gold)" stroke-width="0.5" opacity="0.2"/>
+                    
+                    <!-- GI Letters -->
+                    <text x="100" y="120" font-family="Cormorant Garamond, serif" font-size="70" fill="var(--ivory)" text-anchor="middle" font-weight="300" letter-spacing="4">GI</text>
+                </svg>
+                <h1 class="brand-title">CREATIVE SPACE</h1>
+            </div>
+
+            <!-- Name Prompt -->
+            <div id="name-prompt" class="fade-in">
+                <p class="telugu-prompt">మీ పేరు చెప్పండి</p>
+                <p class="english-prompt">May I know your name?</p>
+                <form id="visitor-form">
+                    <input type="text" id="visitor-name" placeholder="Your Name" autocomplete="off" required>
+                    <button type="submit" aria-label="Enter">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Personalized Welcome -->
+            <div id="personal-welcome" class="hidden">
+                <h2 id="welcome-message" class="welcome-text"></h2>
+                <p class="welcome-sub">సృజనాత్మక ప్రపంచంలోకి స్వాగతం</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         HOMEPAGE (Hidden initially, revealed after transition)
+    =========================================== -->
+    <div id="homepage" class="hidden">
+        <!-- Hero Section (Havelock Bridge Colors) -->
+        <section class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="telugu-headline">గోదావరి స్ఫూర్తితో…<br>సృజనాత్మక ప్రపంచంలోకి.</h1>
+                <p class="english-subhead">Inspired by Tradition, Driven by Innovation</p>
+                <p class="brand-identity">Godavari Roots. Ippanapadu Soul.</p>
+            </div>
+        </section>
+        
+        <!-- FIVE WORLDS DIRECTORY -->
+        <section class="five-worlds-section" id="vibhagalu">
+            <div class="section-header">
+                <h2 class="telugu-title">ఐదు ప్రపంచాలు</h2>
+                <p class="english-subtitle">The Five Worlds</p>
+            </div>
+            
+            <div class="worlds-grid">
+                <!-- 1. GI.Writings -->
+                <a href="pages/gi_writings.html" class="world-card world-writings">
+                    <span class="element-tag">జలం / Jalam</span>
+                    <h3>GI.Writings</h3>
+                    <p>కథలు, కవితలు, జ్ఞాపకాలు, గ్రామ కథలు మరియు రచనా నైపుణ్యాలు.</p>
+                </a>
+                <!-- 2. GI.Devotional -->
+                <a href="pages/gi_devotional.html" class="world-card world-devotional">
+                    <span class="element-tag">అగ్ని / Agni</span>
+                    <h3>GI.Devotional</h3>
+                    <p>ఆలయాలు, చరిత్ర, పురాణాలు, వేదాలు, రామాయణం మరియు భగవద్గీత.</p>
+                </a>
+                <!-- 3. GI.Digital -->
+                <a href="pages/gi_digital.html" class="world-card world-digital">
+                    <span class="element-tag">వాయువు / Vayuvu</span>
+                    <h3>GI.Digital</h3>
+                    <p>వెబ్సైట్లు, డిజిటల్ ఏజెన్సీ సేవలు, AI ప్రకటనలు మరియు సోషల్ మీడియా.</p>
+                </a>
+                <!-- 4. GI.Education -->
+                <a href="pages/gi_education.html" class="world-card world-education">
+                    <span class="element-tag">భూమి / Bhumi</span>
+                    <h3>GI.Education</h3>
+                    <p>సంప్రదాయం, సంస్కృతి మరియు సాంకేతికతను కలిపే భవిష్యత్ విద్యా వ్యవస్థ.</p>
+                </a>
+                <!-- 5. GI.Space -->
+                <a href="pages/gi_space.html" class="world-card world-space">
+                    <span class="element-tag">ఆకాశం / Aakasham</span>
+                    <h3>GI.Space</h3>
+                    <p>వినోదం, క్రీడలు, సృజనాత్మకత, ప్రయోగాలు మరియు కొత్త ఆలోచనలు.</p>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
