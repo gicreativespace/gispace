@@ -1,0 +1,24 @@
+{
+  "name": "GI Creative Space",
+  "short_name": "GI Space",
+  "description": "Inspired by Tradition, Driven by Innovation",
+  "start_url": "./home.html",
+  "display": "standalone",
+  "background_color": "#F7F2E8",
+  "theme_color": "#1F5E7A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
