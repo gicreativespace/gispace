@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v8'; // Bumped to v8
+const CACHE_VERSION = 'v9'; // Bumped to v9
 const CACHE_NAME = `gi-space-${CACHE_VERSION}`;
 
 const STATIC_ASSETS = [
