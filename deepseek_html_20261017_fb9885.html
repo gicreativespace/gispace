@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GI.Devotional | Sacred Stories & Virtual Tours</title>
+    <meta name="description" content="GI.Devotional — ఆలయాలు, చరిత్ర, పురాణాలు, వేదాలు, రామాయణం మరియు భగవద్గీత.">
+    <meta name="theme-color" content="#fff9e8">
+    
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+    <!-- World Specific Styles -->
+    <link rel="stylesheet" href="../css/devotional.css">
+    
+    <!-- PWA & Favicon -->
+    <link rel="manifest" href="../manifest.json">
+    <link rel="apple-touch-icon" href="../assets/icons/icon-192x192.png">
+    <link rel="icon" type="image/png" href="../assets/icons/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Peddana&family=Ramabhadra&display=swap" rel="stylesheet">
+</head>
+<body class="homepage-body fade-in-page devotional-page">
+
+    <!-- PREMIUM RIGHT SIDE SOCIAL RIBBON -->
+    <div class="social-sidebar" id="social-sidebar">
+        <button id="social-toggle-btn" class="social-toggle-btn" aria-label="Toggle Social Media">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="social-ribbon" id="social-ribbon">
+            <a href="#" aria-label="Facebook"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="#" aria-label="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+            <a href="#" aria-label="YouTube"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+            <a href="#" aria-label="WhatsApp"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></a>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header id="main-header" class="header-visible">
+        <div class="header-inner">
+            <a href="../home.html" class="header-logo">
+                <img src="../assets/logo/logo.png" alt="GI Creative Space Logo" class="logo-img">
+                <span class="brand-name">Creative Space</span>
+            </a>
+
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open Menu">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--river-blue)" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
+
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="../home.html"><span class="lang-te">విశ్వం</span><span class="lang-en">Universe</span></a></li>
+                    <li><a href="../home.html#meetho-maa-maata"><span class="lang-te">మీతో మా మాట</span><span class="lang-en">Our Words</span></a></li>
+                    <li class="dropdown">
+                        <a href="../home.html#vibhagalu" class="dropbtn"><span class="lang-te">మా ప్రపంచాలు ▾</span><span class="lang-en">Our Worlds ▾</span></a>
+                        <div class="dropdown-content">
+                            <a href="gi_writings.html"><span class="lang-te">GI.Writings (జలం)</span><span class="lang-en">GI.Writings (Water)</span></a>
+                            <a href="gi_devotional.html"><span class="lang-te">GI.Devotional (అగ్ని)</span><span class="lang-en">GI.Devotional (Fire)</span></a>
+                            <a href="gi_digital.html"><span class="lang-te">GI.Digital (వాయువు)</span><span class="lang-en">GI.Digital (Air)</span></a>
+                            <a href="gi_education.html"><span class="lang-te">GI.Education (భూమి)</span><span class="lang-en">GI.Education (Earth)</span></a>
+                            <a href="gi_space.html"><span class="lang-te">GI.Space (ఆకాశం)</span><span class="lang-en">GI.Space (Space)</span></a>
+                        </div>
+                    </li>
+                    <li><a href="about.html"><span class="lang-te">మా గురించి</span><span class="lang-en">About Us</span></a></li>
+                    <li><a href="contact.html"><span class="lang-te">సంప్రదించండి</span><span class="lang-en">Contact Us</span></a></li>
+                </ul>
+                <div class="mobile-only-toggle">
+                    <div class="lang-toggle-wrapper"><button class="lang-toggle" aria-label="Toggle Language"><span class="lang-option te-option active">తె</span><span class="lang-option en-option">EN</span><div class="lang-slider"></div></button></div>
+                </div>
+            </nav>
+
+            <div class="header-actions desktop-only-actions">
+                <div class="lang-toggle-wrapper"><button class="lang-toggle" aria-label="Toggle Language"><span class="lang-option te-option active">తె</span><span class="lang-option en-option">EN</span><div class="lang-slider"></div></button></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="dev-hero">
+        <div class="dev-wrap dev-hero-content">
+            <div class="eyebrow">A GI CREATIVE SPACE WORLD</div>
+            <h1>GI.DEVOTIONAL<span>FAITH · HISTORY · DISCOVERY</span></h1>
+            <h2>
+                <span class="lang-te">భక్తి నుంచి… కథల లోతుల్లోకి.</span>
+                <span class="lang-en">From Devotion… Into the Depths of Stories.</span>
+            </h2>
+            <p>
+                <span class="lang-te">దేవాలయాల చరిత్ర నుంచి పురాణాల అంతరార్థం వరకు — మన ఆధ్యాత్మిక వారసత్వాన్ని కథలుగా తెలుసుకుందాం. మన ఊరి గుడి నుంచి భారతదేశంలోని పవిత్ర క్షేత్రాల వరకు ఒక వర్చువల్ ప్రయాణం.</span>
+                <span class="lang-en">From the history of temples to the deeper meanings of Puranas — let's explore our spiritual heritage through stories. A virtual journey from our village temple to the sacred sites across India.</span>
+            </p>
+            <div class="actions">
+                <a class="dev-btn primary" href="#stories"><span class="lang-te">పవిత్ర కథలను అన్వేషించండి →</span><span class="lang-en">Explore Sacred Stories →</span></a>
+                <a class="dev-btn" href="#tours"><span class="lang-te">వర్చువల్ టూర్ ప్రారంభించండి</span><span class="lang-en">Start Virtual Tour</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="world-content">
+        <section id="world" class="section-padding">
+            <div class="dev-wrap">
+                <div class="section-label">EXPLORE THE DEVOTIONAL WORLD</div>
+                <h2 class="section-title"><span class="lang-te">మన ఆధ్యాత్మిక ప్రపంచం</span><span class="lang-en">Our Spiritual World</span></h2>
+                <p class="intro">
+                    <span class="lang-te">ప్రతి దేవాలయానికి ఒక కథ ఉంటుంది. ప్రతి సంప్రదాయం వెనుక ఒక నేపథ్యం ఉంటుంది. ప్రతి గ్రంథంలో తెలుసుకోవాల్సిన ఒక భావం ఉంటుంది.</span>
+                    <span class="lang-en">Every temple has a story. Every tradition has a background. Every scripture holds a meaning waiting to be discovered.</span>
+                </p>
+                <div class="dev-cards" id="stories">
+                    <article class="dev-card">
+                        <span class="num">01 / SACRED PLACES</span>
+                        <h3><span class="lang-te">దేవాలయాలు & చరిత్ర</span><span class="lang-en">Temples & History</span></h3>
+                        <p><span class="lang-te">ఆలయాల ఆవిర్భావం, శిల్పకళ, శాసనాలు, ఉత్సవాలు, స్థానిక సంప్రదాయాలు.</span><span class="lang-en">Origins of temples, architecture, inscriptions, festivals, and local traditions.</span></p>
+                    </article>
+                    <article class="dev-card" id="scriptures">
+                        <span class="num">02 / EPICS & PURANAS</span>
+                        <h3><span class="lang-te">పురాణాలు & ఇతిహాసాలు</span><span class="lang-en">Puranas & Epics</span></h3>
+                        <p><span class="lang-te">రామాయణం, మహాభారతం, పురాణ కథలు, పాత్రల వెనుక ఉన్న భావాలు.</span><span class="lang-en">Ramayana, Mahabharata, Puranic tales, and the deeper meanings behind the characters.</span></p>
+                    </article>
+                    <article class="dev-card">
+                        <span class="num">03 / SACRED WISDOM</span>
+                        <h3><span class="lang-te">వేదాలు & భగవద్గీత</span><span class="lang-en">Vedas & Bhagavad Gita</span></h3>
+                        <p><span class="lang-te">ప్రాచీన జ్ఞానం, శ్లోకాల భావం, ధర్మం, జీవన విలువలను సులభంగా తెలుసుకోవడం.</span><span class="lang-en">Ancient wisdom, meanings of slokas, dharma, and life values explained simply.</span></p>
+                    </article>
+                    <article class="dev-card">
+                        <span class="num">04 / LEGENDS</span>
+                        <h3><span class="lang-te">రహస్యాలు & గాథలు</span><span class="lang-en">Mysteries & Legends</span></h3>
+                        <p><span class="lang-te">ఆసక్తికరమైన ఆలయ విశేషాలు, స్థానిక గాథలు, చారిత్రక ప్రశ్నలు — ఆధారాలతో పరిశీలన.</span><span class="lang-en">Intriguing temple facts, local legends, and historical questions — examined with evidence.</span></p>
+                    </article>
+                    <article class="dev-card">
+                        <span class="num">05 / LIVING TRADITIONS</span>
+                        <h3><span class="lang-te">ఆచారాలు & పండుగలు</span><span class="lang-en">Rituals & Festivals</span></h3>
+                        <p><span class="lang-te">పండుగల నేపథ్యం, పూజా సంప్రదాయాలు, అలంకారాల ప్రత్యేకతలు, వాటి సాంస్కృతిక అర్థాలు.</span><span class="lang-en">Background of festivals, worship traditions, uniqueness of decorations, and their cultural meanings.</span></p>
+                    </article>
+                    <article class="dev-card">
+                        <span class="num">06 / IMMERSIVE STORIES</span>
+                        <h3><span class="lang-te">వర్చువల్ స్టోరీ టూర్స్</span><span class="lang-en">Virtual Story Tours</span></h3>
+                        <p><span class="lang-te">మ్యాపులు, నిజమైన ప్రదేశాల దృశ్యాలు, కథనం మరియు విజువల్ రీక్రియేషన్లతో క్షేత్ర పరిచయం.</span><span class="lang-en">An introduction to sacred sites with maps, real visuals, storytelling, and visual recreations.</span></p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="dev-tour" id="tours">
+            <div class="dev-wrap tour-layout">
+                <div class="tour-art"><span>FROM OUR VILLAGE TO INDIA</span></div>
+                <div>
+                    <div class="section-label">TRAVEL THROUGH STORIES</div>
+                    <h2 class="section-title"><span class="lang-te">ఒక ప్రదేశం… ఒక కథ… ఒక ప్రయాణం.</span><span class="lang-en">A Place… A Story… A Journey.</span></h2>
+                    <p class="intro">
+                        <span class="lang-te">మనం ఒక ఆలయాన్ని కేవలం చూడటమే కాదు — దాని స్థలం, చరిత్ర, ప్రజల నమ్మకాలు, సంప్రదాయాలు, కథలను తెలుసుకుంటూ ముందుకు సాగుతాం.</span>
+                        <span class="lang-en">We don't just view a temple — we move forward learning about its location, history, people's beliefs, traditions, and stories.</span>
+                    </p>
+                    <ul class="dev-steps">
+                        <li><b>01</b><span><strong><span class="lang-te">ప్రదేశాన్ని పరిచయం చేసుకోవడం</span><span class="lang-en">Introduce the Location</span></strong><br><small><span class="lang-te">గ్రామం, ఆలయం, పరిసరాలు, మ్యాప్</span><span class="lang-en">Village, temple, surroundings, map</span></small></span></li>
+                        <li><b>02</b><span><strong><span class="lang-te">కథను తెలుసుకోవడం</span><span class="lang-en">Learn the Story</span></strong><br><small><span class="lang-te">స్థల పురాణం, స్థానిక గాథలు, చారిత్రక ఆధారాలు</span><span class="lang-en">Sthala Purana, local legends, historical evidence</span></small></span></li>
+                        <li><b>03</b><span><strong><span class="lang-te">వర్చువల్‌గా అన్వేషించడం</span><span class="lang-en">Explore Virtually</span></strong><br><small><span class="lang-te">వీడియోలు, చిత్రాలు, దృశ్య పునర్నిర్మాణాలు</span><span class="lang-en">Videos, images, visual recreations</span></small></span></li>
+                        <li><b>04</b><span><strong><span class="lang-te">అర్థాన్ని తెలుసుకోవడం</span><span class="lang-en">Understand the Meaning</span></strong><br><small><span class="lang-te">సంప్రదాయాలు, ఆధ్యాత్మిక భావం, సాంస్కృతిక ప్రాముఖ్యత</span><span class="lang-en">Traditions, spiritual significance, cultural importance</span></small></span></li>
+                    </ul>
+                    <a class="dev-btn" href="#journey"><span class="lang-te">మన ప్రయాణాన్ని చూడండి →</span><span class="lang-en">See Our Journey →</span></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="journey" class="section-padding">
+            <div class="dev-wrap">
+                <div class="section-label">A GROWING SACRED MAP</div>
+                <h2 class="section-title"><span class="lang-te">మన ఊరి నుంచి భారతదేశం వరకు</span><span class="lang-en">From Our Village to India</span></h2>
+                <p class="intro">
+                    <span class="lang-te">స్థానిక కథలను సేకరిస్తూ, పరిశీలిస్తూ, క్రమంగా మరిన్ని ప్రాంతాలకు విస్తరించే దీర్ఘకాలిక ప్రయాణం.</span>
+                    <span class="lang-en">A long-term journey of collecting and examining local stories, gradually expanding to more regions.</span>
+                </p>
+                <div class="dev-journey">
+                    <div class="place"><strong><span class="lang-te">గ్రామం</span><span class="lang-en">Village</span></strong><small>Village temples</small></div>
+                    <div class="place"><strong><span class="lang-te">మండలం</span><span class="lang-en">Mandal</span></strong><small>Mandal heritage</small></div>
+                    <div class="place"><strong><span class="lang-te">జిల్లా</span><span class="lang-en">District</span></strong><small>District stories</small></div>
+                    <div class="place"><strong><span class="lang-te">రాష్ట్రం</span><span class="lang-en">State</span></strong><small>State pilgrimage</small></div>
+                    <div class="place"><strong><span class="lang-te">భారతదేశం</span><span class="lang-en">India</span></strong><small>India-wide journeys</small></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="dev-quote">
+            <blockquote>
+                <span class="lang-te">“భక్తి మనసులో మొదలవుతుంది.<br>భావం జీవితంలో కనిపిస్తుంది.”</span>
+                <span class="lang-en">“Devotion begins in the heart.<br>Its meaning is seen in life.”</span>
+            </blockquote>
+            <p>GI.DEVOTIONAL · GI CREATIVE SPACE</p>
+        </div>
+    </main>
+
+    <!-- GLOBAL FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>GI Creative Space</h2>
+                <p class="footer-tagline">Godavari Roots. Ippanapadu Soul.</p>
+                <p class="footer-desc">
+                    <span class="lang-te">సృజనాత్మకతకు, సంప్రదాయానికి మరియు ఆధునికతకు నిలయం.</span>
+                    <span class="lang-en">A home for creativity, tradition, and innovation.</span>
+                </p>
+            </div>
+            <div class="footer-links">
+                <h3><span class="lang-te">మా ప్రపంచాలు</span><span class="lang-en">Our Worlds</span></h3>
+                <ul>
+                    <li><a href="gi_writings.html">GI.Writings</a></li>
+                    <li><a href="gi_devotional.html">GI.Devotional</a></li>
+                    <li><a href="gi_digital.html">GI.Digital</a></li>
+                    <li><a href="gi_education.html">GI.Education</a></li>
+                    <li><a href="gi_space.html">GI.Space</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3><span class="lang-te">త్వరిత లింకులు</span><span class="lang-en">Quick Links</span></h3>
+                <ul>
+                    <li><a href="../home.html"><span class="lang-te">విశ్వం</span><span class="lang-en">Universe</span></a></li>
+                    <li><a href="about.html"><span class="lang-te">మా గురించి</span><span class="lang-en">About Us</span></a></li>
+                    <li><a href="contact.html"><span class="lang-te">సంప్రదించండి</span><span class="lang-en">Contact Us</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3><span class="lang-te">మమ్మల్ని సంప్రదించండి</span><span class="lang-en">Reach Out</span></h3>
+                <a href="tel:+918985361991" class="footer-btn call-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <span class="lang-te">కాల్ చేయండి</span><span class="lang-en">Call Us</span>
+                </a>
+                <a href="tel:+919133140148" class="footer-btn call-btn" style="border-color: rgba(201,164,92,0.5);">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <span class="lang-te">కాల్ చేయండి</span><span class="lang-en">Call Us</span>
+                </a>
+                <a href="https://wa.me/918985361991" target="_blank" rel="noopener noreferrer" class="footer-btn wa-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    <span class="lang-te">వాట్సాప్</span><span class="lang-en">WhatsApp</span>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-socials">
+                <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                <a href="#" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+            </div>
+            <div class="footer-legal">
+                <p>&copy; 2024 GI Creative Space. All rights reserved.</p>
+                <p class="footer-signature">An initiative of @valiass team</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GODARODU FLOATING CHATBOT BUTTON -->
+    <a href="godarodu.html" class="godarodu-fab" aria-label="Chat with Godarodu">
+        <div class="godarodu-avatar"><span>గో</span></div>
+        <div class="godarodu-text">
+            <span class="lang-te">గోదారోడు</span>
+            <span class="lang-en">Godarodu</span>
+        </div>
+    </a>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
