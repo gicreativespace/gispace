@@ -78,13 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 4. MOBILE MENU & HEADER LOGIC
+    // 4. MOBILE MENU LOGIC
     // ==========================================
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mainNav = document.getElementById('main-nav');
-    const header = document.getElementById('main-header');
-    const socialToggleBtn = document.getElementById('social-toggle-btn');
-    const socialRibbon = document.getElementById('social-ribbon');
 
     if (mobileMenuBtn && mainNav) {
         mobileMenuBtn.addEventListener('click', () => {
@@ -119,18 +116,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 5. SCROLL & SOCIAL RIBBON
+    // 5. SCROLL & HEADER LOCK LOGIC
     // ==========================================
+    const header = document.getElementById('main-header');
+    const socialToggleBtn = document.getElementById('social-toggle-btn');
+    const socialRibbon = document.getElementById('social-ribbon');
+
     if (header) {
-        let lastScrollY = window.scrollY;
         window.addEventListener('scroll', () => {
-            if (lastScrollY < window.scrollY && window.scrollY > 100) {
-                header.classList.add('header-hidden');
-                if(socialRibbon) socialRibbon.classList.remove('open');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
             } else {
-                header.classList.remove('header-hidden');
+                header.classList.remove('scrolled');
             }
-            lastScrollY = window.scrollY;
+            
+            // Close social ribbon on scroll
+            if (socialRibbon) socialRibbon.classList.remove('open');
         });
     }
 
