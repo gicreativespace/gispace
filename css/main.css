@@ -198,8 +198,8 @@ body.english-mode .lang-slider { transform: translateX(38px); }
    ========================================== */
 .hero-section {
     position: relative; height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center;
-    background-color: var(--river-blue); /* Fallback */
-    background-image: linear-gradient(rgba(6, 26, 43, 0.6), rgba(6, 26, 43, 0.4)), url('../assets/images/hero/godavari-hero.jpg'); /* YOUR WALLPAPER */
+    background-color: var(--river-blue); 
+    background-image: linear-gradient(rgba(6, 26, 43, 0.6), rgba(6, 26, 43, 0.4)), url('../assets/images/hero/godavari-hero.jpg'); 
     background-size: cover; background-position: center; background-attachment: fixed;
     color: var(--ivory);
     padding-top: 80px;
@@ -240,10 +240,11 @@ body.english-mode .lang-slider { transform: translateX(38px); }
 .world-space .element-tag { background-color: rgba(201, 164, 92, 0.2); color: var(--gold); }
 
 /* ==========================================
-   7. PREMIUM RIGHT SOCIAL RIBBON
+   7. PREMIUM RIGHT SIDE SOCIAL RIBBON
    ========================================== */
 .social-sidebar {
-    position: fixed; top: 50%; right: 0; transform: translateY(-50%);
+    position: fixed; top: 50%; right: 0; left: auto; /* RIGHT SIDE */
+    transform: translateY(-50%);
     z-index: 2000; display: flex; align-items: center; justify-content: flex-end;
 }
 
@@ -252,7 +253,7 @@ body.english-mode .lang-slider { transform: translateX(38px); }
     position: relative; z-index: 2;
     background: var(--ivory);
     border: 1px solid rgba(201, 164, 92, 0.5);
-    border-right: none;
+    border-right: none; /* Border on left side only */
     padding: 24px 10px;
     border-radius: 8px 0 0 8px; /* Rounded on the left */
     cursor: pointer; color: var(--river-blue);
@@ -266,24 +267,24 @@ body.english-mode .lang-slider { transform: translateX(38px); }
     border-color: var(--gold);
 }
 .social-toggle-btn svg { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-.social-sidebar.is-open .social-toggle-btn svg { transform: rotate(180deg); }
+.social-sidebar.is-open .social-toggle-btn svg { transform: rotate(180deg); } /* Flips arrow */
 
 /* The Sliding Panel */
 .social-sidebar .social-ribbon {
-    position: absolute; right: 0; top: 50%;
-    transform: translateY(-50%) translateX(100%); /* Hidden to the right */
+    position: absolute; right: 0; left: auto; top: 50%;
+    transform: translateY(-50%) translateX(100%); /* Hidden to the RIGHT */
     background: rgba(247, 242, 232, 0.95);
     backdrop-filter: blur(10px);
     display: flex; flex-direction: column; gap: 1.5rem;
     padding: 1.5rem 1.2rem;
     border: 1px solid rgba(201, 164, 92, 0.4); border-right: none;
-    border-radius: 8px 0 0 8px;
+    border-radius: 8px 0 0 8px; /* Rounded on the left */
     box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
 }
 
-/* Slide out to the left */
+/* Slide out to the LEFT */
 .social-sidebar.is-open .social-ribbon {
     transform: translateY(-50%) translateX(-40px); /* -40px is the width of the button */
 }
@@ -291,7 +292,7 @@ body.english-mode .lang-slider { transform: translateX(38px); }
 .social-sidebar .social-ribbon a {
     color: var(--river-blue); text-decoration: none;
     transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;
-    padding: 8px; border-radius: 50%; background: rgba(31, 94, 122, 0.05);
+    padding: 10px; border-radius: 50%; background: rgba(31, 94, 122, 0.05);
 }
 .social-sidebar .social-ribbon a:hover {
     color: var(--gold); background: rgba(201, 164, 92, 0.15); transform: scale(1.1);
@@ -317,9 +318,11 @@ body.english-mode .lang-slider { transform: translateX(38px); }
 .wa-btn { background: #25D366; border: 1px solid #25D366; color: #fff; }
 .wa-btn:hover { background: #128C7E; border-color: #128C7E; }
 .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(247, 242, 232, 0.1); display: flex; justify-content: space-between; align-items: center; }
+
 .footer-socials { display: flex; gap: 1.5rem; }
-.footer-socials a { color: var(--ivory); text-decoration: none; font-family: var(--font-english); font-weight: 600; transition: color 0.3s ease; }
-.footer-socials a:hover { color: var(--gold); }
+.footer-socials a { color: var(--ivory); text-decoration: none; transition: color 0.3s ease, transform 0.3s ease; display: flex; align-items: center; justify-content: center; }
+.footer-socials a:hover { color: var(--gold); transform: translateY(-3px); }
+
 .footer-legal { text-align: right; }
 .footer-legal p { font-size: 0.9rem; color: rgba(247, 242, 232, 0.6); margin-bottom: 0.3rem; }
 .footer-signature { font-family: var(--font-english); font-weight: 600; color: var(--gold) !important; letter-spacing: 1px; }
