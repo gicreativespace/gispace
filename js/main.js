@@ -1,82 +1,76 @@
 // ==========================================
-// 0. AUTO CACHE CLEARING SYSTEM
+// 0. AUTO CACHE CLEARING (Fixed for missing version.json)
 // ==========================================
 (async function autoClearCache() {
     try {
-        // Fetch the version file (with a timestamp to prevent it from being cached)
-        const res = await fetch(`/version.json?t=${Date.now()}`, { cache: 'no-store' });
-        const data = await res.json();
+        const res = await fetch(`./version.json?t=${Date.now()}`, { cache: 'no-store' });
         
+        // 🚨 THE FIX: If the file is missing (404), stop here! Don't crash.
+        if (!res.ok) {
+            console.warn('version.json not found. Skipping auto-cache clear.');
+            return; 
+        }
+        
+        const data = await res.json();
         const currentVersion = localStorage.getItem('gi_app_version');
         
-        if (currentVersion !== data.version) {
-            console.log(`Updating app from ${currentVersion} to ${data.version}...`);
-            
-            // Save new version
+        if (currentVersion && currentVersion !== data.version) {
+            console.log(`Updating from ${currentVersion} to ${data.version}...`);
             localStorage.setItem('gi_app_version', data.version);
             
-            // Unregister all Service Workers
             if ('serviceWorker' in navigator) {
                 const regs = await navigator.serviceWorker.getRegistrations();
                 for (let reg of regs) await reg.unregister();
             }
-            
-            // Delete all browser caches
             if ('caches' in window) {
                 const keys = await caches.keys();
                 for (let key of keys) await caches.delete(key);
             }
-            
-            // Force a hard reload from the server
             window.location.reload(true);
+        } else if (!currentVersion) {
+            localStorage.setItem('gi_app_version', data.version);
         }
     } catch (err) {
-        console.log('Version check skipped:', err);
+        console.log('Version check skipped:', err.message);
     }
 })();
-// ==========================================
-// 1. PWA SERVICE WORKER REGISTRATION
-// ==========================================
-// ... your existing Service Worker code continues below ...
 
 // ==========================================
-// 1. PWA SERVICE WORKER (Isolated so it never breaks the site)
-// ==========================================
-const SW_VERSION = 'v5'; // Must match sw.js
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', async () => {
-        try {
-            const registrations = await navigator.serviceWorker.getRegistrations();
-            for (let reg of registrations) {
-                const currentSW = reg.active || reg.waiting || reg.installing;
-                if (currentSW && !currentSW.scriptURL.includes(SW_VERSION)) {
-                    await reg.unregister();
-                }
-            }
-            await navigator.serviceWorker.register(`./sw.js?${SW_VERSION}`, { updateViaCache: 'none' });
-            const reg = await navigator.serviceWorker.getRegistration();
-            if (reg) await reg.update();
-            
-            let refreshing = false;
-            navigator.serviceWorker.addEventListener('controllerchange', () => {
-                if (!refreshing) { refreshing = true; window.location.reload(); }
-            });
-        } catch (err) {
-            console.error('SW setup failed:', err);
-        }
-    });
-}
-
-// ==========================================
-// 2. LANGUAGE TOGGLE & UI LOGIC (Runs smoothly)
+// MAIN LOGIC
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- A. LANGUAGE TOGGLE ---
+    // --- 1. ENTRANCE FORM (index.html) ---
+    const visitorForm = document.getElementById('visitor-form');
+    const visitorNameInput = document.getElementById('visitor-name');
+    const namePrompt = document.getElementById('name-prompt');
+    const personalWelcome = document.getElementById('personal-welcome');
+    const welcomeMessage = document.getElementById('welcome-message');
+    const spaceEntrance = document.getElementById('space-entrance');
+
+    if (visitorForm) {
+        visitorForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const visitorName = visitorNameInput.value.trim();
+            if (!visitorName) return;
+            
+            namePrompt.classList.add('hidden');
+            welcomeMessage.textContent = `రండి ${visitorName} గారు.`;
+            personalWelcome.classList.remove('hidden');
+            
+            setTimeout(() => { personalWelcome.classList.add('show'); }, 50);
+
+            setTimeout(() => {
+                if (spaceEntrance) spaceEntrance.classList.add('entrance-exit');
+                setTimeout(() => { window.location.href = 'home.html'; }, 800);
+            }, 2500);
+        });
+    }
+
+    // --- 2. LANGUAGE TOGGLE ---
     const langToggleBtns = document.querySelectorAll('.lang-toggle');
     const body = document.body;
 
-    // Check saved preference
     const savedLang = localStorage.getItem('gi-lang');
     if (savedLang === 'en') {
         body.classList.add('english-mode');
@@ -85,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateToggleUI(false);
     }
 
-    // Add click listener to toggle buttons
     langToggleBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             body.classList.toggle('english-mode');
@@ -109,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- B. HEADER SCROLL EFFECT ---
+    // --- 3. HEADER SCROLL EFFECT ---
     const header = document.getElementById('main-header');
     if (header) {
         window.addEventListener('scroll', () => {
@@ -118,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- C. MOBILE MENU ---
+    // --- 4. MOBILE MENU ---
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mainNav = document.getElementById('main-nav');
     if (mobileMenuBtn && mainNav) {
@@ -130,8 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileMenuBtn.innerHTML = `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--river-blue)" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>`;
             }
         });
-        
-        // Mobile dropdown toggle
+
         const dropbtn = document.querySelector('.dropbtn');
         const dropdown = document.querySelector('.dropdown');
         if (dropbtn && dropdown) {
@@ -144,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- D. RIGHT SOCIAL RIBBON ---
+    // --- 5. RIGHT SIDE SOCIAL RIBBON ---
     const socialSidebar = document.getElementById('social-sidebar');
     const socialToggleBtn = document.getElementById('social-toggle-btn');
     if (socialToggleBtn && socialSidebar) {
