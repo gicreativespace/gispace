@@ -10,13 +10,18 @@
     --gold-glow: rgba(201, 164, 92, 0.4);
     --river-blue: #1F5E7A;
     --sky-blue: #A9D6E5;
-    --font-telugu: 'Gurajada', 'Ramabhadra', serif;
+    
+    /* Premium Telugu Fonts */
+    --font-telugu: 'Peddana', 'Ramabhadra', serif;
+    --font-telugu-bold: 'Ramabhadra', 'Peddana', serif;
     --font-english: 'Cormorant Garamond', serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* --- ENTRANCE PAGE STYLES --- */
+/* ==========================================
+   1. ENTRANCE PAGE STYLES
+   ========================================== */
 .entrance-body {
     background-color: var(--space-blue);
     color: var(--ivory);
@@ -83,7 +88,7 @@
 .fade-in { animation: fadeIn 2s ease 1s forwards; opacity: 0; }
 @keyframes fadeIn { to { opacity: 1; } }
 
-.telugu-prompt { font-family: var(--font-telugu); font-size: 2rem; color: var(--ivory); margin-bottom: 0.2rem; }
+.telugu-prompt { font-family: var(--font-telugu-bold); font-size: 2rem; color: var(--ivory); margin-bottom: 0.2rem; }
 .english-prompt { font-size: 1.1rem; color: rgba(247, 242, 232, 0.5); font-style: italic; margin-bottom: 1.5rem; }
 
 #visitor-form {
@@ -102,13 +107,15 @@
 
 #personal-welcome { opacity: 0; transform: translateY(15px); transition: opacity 1.5s ease, transform 1.5s ease; }
 #personal-welcome.show { opacity: 1; transform: translateY(0); }
-.welcome-text { font-family: var(--font-telugu); font-size: 3rem; color: var(--gold); margin-bottom: 0.5rem; text-shadow: 0 0 20px var(--gold-glow); }
+.welcome-text { font-family: var(--font-telugu-bold); font-size: 3rem; color: var(--gold); margin-bottom: 0.5rem; text-shadow: 0 0 20px var(--gold-glow); }
 .welcome-sub { font-family: var(--font-telugu); font-size: 1.6rem; color: var(--ivory); }
 
 .hidden { display: none !important; }
 .entrance-exit { opacity: 0; transform: scale(4); pointer-events: none; }
 
-/* --- HOMEPAGE BASE --- */
+/* ==========================================
+   2. HOMEPAGE BASE & ANIMATIONS
+   ========================================== */
 .homepage-body {
     background-color: var(--ivory);
     overflow-x: hidden; overflow-y: auto;
@@ -118,26 +125,60 @@
 .fade-in-page { animation: pageFadeIn 1.5s ease-out forwards; }
 @keyframes pageFadeIn { from { opacity: 0; background-color: var(--deep-space); } to { opacity: 1; background-color: var(--ivory); } }
 
-/* --- HEADER & NAVIGATION --- */
+/* ==========================================
+   3. LOCKED PREMIUM HEADER
+   ========================================== */
 #main-header {
-    position: fixed; top: 0; left: 0; width: 100%;
-    background: rgba(247, 242, 232, 0.95); backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(201, 164, 92, 0.2); z-index: 1000;
-    transition: transform 0.4s ease, background 0.4s ease;
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    background: rgba(247, 242, 232, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(201, 164, 92, 0.15);
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1rem 0;
 }
-#main-header.header-hidden { transform: translateY(-100%); }
+
+/* Scrolled state for the locked header */
+#main-header.scrolled {
+    padding: 0.5rem 0;
+    background: rgba(247, 242, 232, 0.98);
+    box-shadow: 0 4px 30px rgba(6, 26, 43, 0.08);
+    border-bottom: 1px solid rgba(201, 164, 92, 0.3);
+}
 
 .header-inner {
-    max-width: 1400px; margin: 0 auto; padding: 1rem 2rem;
-    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.4s ease;
 }
+
 .header-logo { text-decoration: none; display: flex; align-items: center; gap: 10px; color: var(--river-blue); }
-.header-logo .logo-text { font-family: var(--font-english); font-size: 1.8rem; font-weight: 600; color: var(--gold); letter-spacing: 2px; }
+.header-logo .logo-text { font-family: var(--font-english); font-size: 1.8rem; font-weight: 600; color: var(--gold); letter-spacing: 2px; transition: text-shadow 0.3s ease; }
+.header-logo:hover .logo-text { text-shadow: 0 0 15px rgba(201, 164, 92, 0.5); }
 .header-logo .brand-name { font-size: 1.1rem; font-weight: 400; letter-spacing: 1px; }
 
+/* Navigation */
 .main-nav ul { list-style: none; display: flex; gap: 2rem; }
-.main-nav a { text-decoration: none; color: var(--river-blue); position: relative; transition: color 0.3s ease; padding-bottom: 5px; }
+.main-nav a {
+    text-decoration: none; color: var(--river-blue); position: relative;
+    transition: color 0.3s ease; padding-bottom: 5px; display: inline-block;
+}
+.main-nav a::after {
+    content: ''; position: absolute; width: 0; height: 2px; bottom: 0;
+    left: 50%; background: var(--gold); transition: all 0.3s ease;
+    transform: translateX(-50%); border-radius: 2px;
+}
+.main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
 .main-nav a:hover, .main-nav a.active { color: var(--gold); }
+
+.main-nav a .lang-te { font-family: var(--font-telugu-bold); font-size: 1.15rem; letter-spacing: 0.5px; }
+.main-nav a .lang-en { font-family: var(--font-english); font-size: 1.1rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
 
 /* Dropdown */
 .dropdown { position: relative; }
@@ -165,14 +206,13 @@
 .social-ribbon a { text-decoration: none; color: var(--river-blue); font-family: var(--font-english); font-weight: 600; font-size: 1.2rem; text-align: center; transition: color 0.3s ease; }
 .social-ribbon a:hover { color: var(--gold); }
 
-/* --- STRICT LANGUAGE TOGGLE SYSTEM --- */
+/* ==========================================
+   4. LANGUAGE TOGGLE SYSTEM
+   ========================================== */
 .lang-en { display: none !important; }
 .lang-te { display: inline-block; }
 body.english-mode .lang-te { display: none !important; }
 body.english-mode .lang-en { display: inline-block !important; }
-
-.main-nav a .lang-te { font-family: var(--font-telugu); font-size: 1.3rem; }
-.main-nav a .lang-en { font-family: var(--font-english); font-size: 1.1rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
 
 .lang-toggle {
     position: relative; background: rgba(31, 94, 122, 0.05); border: 1px solid rgba(201, 164, 92, 0.4);
@@ -181,7 +221,7 @@ body.english-mode .lang-en { display: inline-block !important; }
 }
 .lang-toggle:hover { border-color: var(--gold); box-shadow: 0 0 10px rgba(201, 164, 92, 0.2); }
 .lang-option { position: relative; z-index: 2; flex: 1; text-align: center; font-size: 0.8rem; font-weight: 600; color: var(--river-blue); transition: color 0.3s ease; }
-.te-option { font-family: var(--font-telugu); font-size: 1rem; }
+.te-option { font-family: var(--font-telugu-bold); font-size: 1rem; }
 .lang-option.active { color: var(--deep-space) !important; }
 .lang-slider {
     position: absolute; top: 4px; left: 4px; width: 36px; height: 26px;
@@ -190,22 +230,27 @@ body.english-mode .lang-en { display: inline-block !important; }
 }
 body.english-mode .lang-slider { transform: translateX(38px); }
 
-/* --- HERO SECTION --- */
+/* ==========================================
+   5. HERO SECTION
+   ========================================== */
 .hero-section {
     position: relative; height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center;
     background: linear-gradient(to bottom, var(--sky-blue) 0%, #6FA3C7 40%, var(--river-blue) 100%);
     color: var(--ivory);
+    padding-top: 80px; /* Prevents header overlap */
 }
 .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, rgba(6, 26, 43, 0.4) 100%); }
 .hero-content { position: relative; z-index: 2; padding: 2rem; }
-.telugu-headline { font-family: var(--font-telugu); font-size: 3.5rem; line-height: 1.2; text-shadow: 0 4px 12px rgba(6, 26, 43, 0.5); margin-bottom: 1.5rem; }
+.telugu-headline { font-family: var(--font-telugu-bold); font-size: 3.5rem; line-height: 1.2; text-shadow: 0 4px 12px rgba(6, 26, 43, 0.5); margin-bottom: 1.5rem; }
 .english-subhead { font-size: 1.5rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--gold); }
 .brand-identity { font-style: italic; font-size: 1.2rem; color: rgba(247, 242, 232, 0.8); }
 
-/* --- FIVE WORLDS SECTION --- */
+/* ==========================================
+   6. FIVE WORLDS SECTION
+   ========================================== */
 .five-worlds-section { padding: 6rem 2rem; background-color: var(--ivory); display: flex; flex-direction: column; align-items: center; }
 .section-header { text-align: center; margin-bottom: 4rem; }
-.section-header .telugu-title { font-family: var(--font-telugu); font-size: 3rem; color: var(--river-blue); margin-bottom: 0.5rem; }
+.section-header .telugu-title { font-family: var(--font-telugu-bold); font-size: 3rem; color: var(--river-blue); margin-bottom: 0.5rem; }
 .section-header .english-subtitle { font-size: 1.2rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
 .worlds-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; width: 100%; }
 .world-card {
@@ -214,9 +259,9 @@ body.english-mode .lang-slider { transform: translateX(38px); }
     position: relative; overflow: hidden; border: 1px solid rgba(0,0,0,0.05);
 }
 .world-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(6, 26, 43, 0.1); }
-.world-card .element-tag { font-family: var(--font-telugu); font-size: 1.1rem; margin-bottom: 1rem; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 20px; font-weight: 500; }
-.world-card h3 { font-size: 1.8rem; margin-bottom: 1rem; font-weight: 600; letter-spacing: 1px; }
-.world-card p { font-size: 1rem; line-height: 1.6; opacity: 0.8; }
+.world-card .element-tag { font-family: var(--font-telugu-bold); font-size: 1.1rem; margin-bottom: 1rem; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 20px; font-weight: 500; }
+.world-card h3 { font-size: 1.8rem; margin-bottom: 1rem; font-weight: 600; letter-spacing: 1px; font-family: var(--font-english); }
+.world-card p { font-size: 1rem; line-height: 1.6; opacity: 0.8; font-family: var(--font-telugu); font-size: 1.3rem; }
 
 /* World Themes */
 .world-writings { background-color: #F0F7EE; color: #2E4A32; border-top: 4px solid #A3C9A8; }
@@ -231,12 +276,62 @@ body.english-mode .lang-slider { transform: translateX(38px); }
 .world-space .element-tag { background-color: rgba(201, 164, 92, 0.2); color: var(--gold); }
 
 /* ==========================================
-   MOBILE RESPONSIVE & PWA STYLES
+   7. FOOTER STYLES
+   ========================================== */
+.main-footer {
+    background-color: var(--space-blue);
+    color: var(--ivory);
+    padding: 4rem 2rem 2rem;
+    border-top: 3px solid var(--gold);
+}
+.footer-grid {
+    max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; margin-bottom: 3rem;
+}
+.footer-brand h2 { font-family: var(--font-english); font-size: 2rem; color: var(--gold); margin-bottom: 0.5rem; letter-spacing: 2px; }
+.footer-tagline { font-style: italic; color: rgba(247, 242, 232, 0.7); margin-bottom: 1.5rem; }
+.footer-desc { font-size: 0.95rem; line-height: 1.6; color: rgba(247, 242, 232, 0.8); font-family: var(--font-telugu); font-size: 1.2rem; }
+.footer-links h3, .footer-contact h3 { font-family: var(--font-telugu-bold); font-size: 1.3rem; color: var(--gold); margin-bottom: 1.5rem; font-weight: 500; }
+.footer-links ul { list-style: none; }
+.footer-links li { margin-bottom: 0.8rem; }
+.footer-links a { color: var(--ivory); text-decoration: none; font-size: 1rem; transition: color 0.3s ease, padding-left 0.3s ease; font-family: var(--font-telugu); font-size: 1.2rem; }
+.footer-links a:hover { color: var(--gold); padding-left: 5px; }
+.footer-contact { display: flex; flex-direction: column; gap: 1rem; }
+.footer-btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0.8rem 1.5rem; border-radius: 4px; text-decoration: none; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; font-family: var(--font-telugu-bold); font-size: 1.1rem; }
+.call-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); }
+.call-btn:hover { background: var(--gold); color: var(--space-blue); }
+.wa-btn { background: #25D366; border: 1px solid #25D366; color: #fff; }
+.wa-btn:hover { background: #128C7E; border-color: #128C7E; }
+.footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(247, 242, 232, 0.1); display: flex; justify-content: space-between; align-items: center; }
+.footer-socials { display: flex; gap: 1.5rem; }
+.footer-socials a { color: var(--ivory); text-decoration: none; font-family: var(--font-english); font-weight: 600; transition: color 0.3s ease; }
+.footer-socials a:hover { color: var(--gold); }
+.footer-legal { text-align: right; }
+.footer-legal p { font-size: 0.9rem; color: rgba(247, 242, 232, 0.6); margin-bottom: 0.3rem; }
+.footer-signature { font-family: var(--font-english); font-weight: 600; color: var(--gold) !important; letter-spacing: 1px; }
+
+/* ==========================================
+   8. GODARODU FLOATING BUTTON
+   ========================================== */
+.godarodu-fab {
+    position: fixed; bottom: 30px; right: 30px;
+    display: flex; align-items: center; gap: 12px;
+    background: var(--ivory); padding: 8px 20px 8px 8px; border-radius: 50px;
+    text-decoration: none; box-shadow: 0 10px 25px rgba(6, 26, 43, 0.2);
+    border: 1px solid rgba(201, 164, 92, 0.4); z-index: 9999;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.godarodu-fab:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(6, 26, 43, 0.3); }
+.godarodu-avatar { width: 45px; height: 45px; background: var(--gold); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: var(--space-blue); font-family: var(--font-telugu-bold); font-size: 1.5rem; }
+.godarodu-text { color: var(--river-blue); font-family: var(--font-telugu-bold); font-size: 1.1rem; }
+.godarodu-text .lang-en { font-family: var(--font-english); font-size: 0.9rem; letter-spacing: 1px; }
+
+/* ==========================================
+   9. MOBILE RESPONSIVE & PWA STYLES
    ========================================== */
 .mobile-menu-btn, .mobile-only-toggle { display: none; }
 
 @media (max-width: 900px) {
-    .header-inner { padding: 1rem 1.5rem; justify-content: space-between; }
+    .header-inner { padding: 0 1.5rem; justify-content: space-between; }
     .mobile-menu-btn { display: block; background: transparent; border: none; cursor: pointer; z-index: 1001; }
     .desktop-only-actions { display: none; }
 
@@ -256,16 +351,23 @@ body.english-mode .lang-slider { transform: translateX(38px); }
     .dropdown-content a { justify-content: center; gap: 10px; padding: 0.5rem; }
 
     .mobile-only-toggle { display: flex; margin-top: 2rem; }
-
     .social-ribbon { right: 50%; transform: translate(50%, -10px); width: 80%; }
     .social-ribbon.open { transform: translate(50%, 0); }
 
+    .hero-section { padding-top: 60px; }
     .telugu-headline { font-size: 2.5rem; }
     .five-worlds-section { padding: 4rem 1rem; }
     .worlds-grid { grid-template-columns: 1fr; }
     .giant-gi-logo { width: 60vmin; height: 60vmin; }
     .telugu-prompt { font-size: 1.6rem; }
     .welcome-text { font-size: 2.2rem; }
+
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+    .footer-contact { align-items: center; }
+    .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .footer-legal { text-align: center; }
+    .godarodu-fab { bottom: 20px; right: 20px; padding: 6px 15px 6px 6px; }
+    .godarodu-avatar { width: 35px; height: 35px; font-size: 1.2rem; }
 }
 
 button, a { -webkit-tap-highlight-color: transparent; }
@@ -275,241 +377,4 @@ html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
     .stars, .stars2, .giant-gi-logo { animation: none; }
     .entrance-exit { transform: none; }
     #space-entrance, #homepage { transition: opacity 0.5s ease; }
-}
-/* ==========================================
-   FOOTER STYLES
-   ========================================== */
-.main-footer {
-    background-color: var(--space-blue);
-    color: var(--ivory);
-    padding: 4rem 2rem 2rem;
-    border-top: 3px solid var(--gold);
-}
-
-.footer-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
-    gap: 3rem;
-    margin-bottom: 3rem;
-}
-
-.footer-brand h2 {
-    font-family: var(--font-english);
-    font-size: 2rem;
-    color: var(--gold);
-    margin-bottom: 0.5rem;
-    letter-spacing: 2px;
-}
-
-.footer-tagline {
-    font-style: italic;
-    color: rgba(247, 242, 232, 0.7);
-    margin-bottom: 1.5rem;
-}
-
-.footer-desc {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: rgba(247, 242, 232, 0.8);
-}
-
-.footer-links h3, .footer-contact h3 {
-    font-family: var(--font-telugu);
-    font-size: 1.3rem;
-    color: var(--gold);
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-}
-
-.footer-links ul {
-    list-style: none;
-}
-
-.footer-links li {
-    margin-bottom: 0.8rem;
-}
-
-.footer-links a {
-    color: var(--ivory);
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s ease, padding-left 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: var(--gold);
-    padding-left: 5px;
-}
-
-/* Footer Contact Buttons */
-.footer-contact {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.footer-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 0.8rem 1.5rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.call-btn {
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-}
-.call-btn:hover {
-    background: var(--gold);
-    color: var(--space-blue);
-}
-
-.wa-btn {
-    background: #25D366;
-    border: 1px solid #25D366;
-    color: #fff;
-}
-.wa-btn:hover {
-    background: #128C7E;
-    border-color: #128C7E;
-}
-
-/* Footer Bottom */
-.footer-bottom {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(247, 242, 232, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-socials {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.footer-socials a {
-    color: var(--ivory);
-    text-decoration: none;
-    font-family: var(--font-english);
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-
-.footer-socials a:hover {
-    color: var(--gold);
-}
-
-.footer-legal {
-    text-align: right;
-}
-
-.footer-legal p {
-    font-size: 0.9rem;
-    color: rgba(247, 242, 232, 0.6);
-    margin-bottom: 0.3rem;
-}
-
-.footer-signature {
-    font-family: var(--font-english);
-    font-weight: 600;
-    color: var(--gold) !important;
-    letter-spacing: 1px;
-}
-
-/* ==========================================
-   GODARODU FLOATING CHATBOT BUTTON
-   ========================================== */
-.godarodu-fab {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--ivory);
-    padding: 8px 20px 8px 8px;
-    border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0 10px 25px rgba(6, 26, 43, 0.2);
-    border: 1px solid rgba(201, 164, 92, 0.4);
-    z-index: 9999;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.godarodu-fab:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(6, 26, 43, 0.3);
-}
-
-.godarodu-avatar {
-    width: 45px;
-    height: 45px;
-    background: var(--gold);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--space-blue);
-    font-family: var(--font-telugu);
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.godarodu-text {
-    color: var(--river-blue);
-    font-family: var(--font-telugu);
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.godarodu-text .lang-en {
-    font-family: var(--font-english);
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-}
-
-/* Mobile Adjustments */
-@media (max-width: 900px) {
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        text-align: center;
-    }
-    
-    .footer-contact {
-        align-items: center;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        gap: 1.5rem;
-        text-align: center;
-    }
-
-    .footer-legal {
-        text-align: center;
-    }
-
-    .godarodu-fab {
-        bottom: 20px;
-        right: 20px;
-        padding: 6px 15px 6px 6px;
-    }
-    .godarodu-avatar {
-        width: 35px;
-        height: 35px;
-        font-size: 1.2rem;
-    }
 }
