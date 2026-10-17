@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GI Creative Works | Entrance</title>
+    
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+    <link rel="stylesheet" href="css/main.css">
+    <meta name="theme-color" content="#061A2B">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Peddana&family=Ramabhadra&display=swap" rel="stylesheet">
+</head>
+<body class="entrance-body">
+
+    <div id="space-entrance" class="entrance-active">
+        <div class="space-bg">
+            <div class="stars"></div>
+            <div class="stars2"></div>
+            <div class="nebula"></div>
+        </div>
+
+        <div class="entrance-content">
+            <!-- GIANT GI MONOGRAM -->
+            <div class="logo-container">
+                <svg class="giant-gi-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="100" cy="100" rx="90" ry="30" transform="rotate(-35 100 100)" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.6"/>
+                    <ellipse cx="100" cy="100" rx="90" ry="30" transform="rotate(35 100 100)" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.6"/>
+                    <ellipse cx="100" cy="100" rx="80" ry="80" fill="none" stroke="var(--gold)" stroke-width="0.5" opacity="0.2"/>
+                    <text x="100" y="120" font-family="Cormorant Garamond, serif" font-size="70" fill="var(--ivory)" text-anchor="middle" font-weight="300" letter-spacing="4">GI</text>
+                </svg>
+                <h1 class="brand-title">CREATIVE WORKS</h1>
+            </div>
+
+            <!-- Name Prompt -->
+            <div id="name-prompt" class="fade-in">
+                <p class="telugu-prompt lang-te">మీ పేరు చెప్పండి</p>
+                <p class="english-prompt lang-en">May I know your name?</p>
+                <form id="visitor-form">
+                    <input type="text" id="visitor-name" placeholder="Your Name" autocomplete="off" required>
+                    <button type="submit" aria-label="Enter">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Personalized Welcome -->
+            <div id="personal-welcome" class="hidden">
+                <h2 id="welcome-message" class="welcome-text"></h2>
+                <p class="welcome-sub lang-te">సృజనాత్మక ప్రపంచంలోకి స్వాగతం</p>
+                <p class="welcome-sub lang-en">Welcome to the Creative World</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
