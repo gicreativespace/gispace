@@ -1,4 +1,3 @@
-// BUMP THIS VERSION EVERY TIME YOU UPDATE FILES
 const CACHE_VERSION = 'v3';
 const CACHE_NAME = `gi-space-${CACHE_VERSION}`;
 
@@ -22,39 +21,29 @@ const STATIC_ASSETS = [
   './pages/gi_space.html'
 ];
 
-// ---------- INSTALL ----------
 self.addEventListener('install', (event) => {
-  self.skipWaiting(); // Take over immediately
+  self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(STATIC_ASSETS).catch(err => {
-        console.warn('Some assets failed to cache:', err);
-      });
-    })
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(STATIC_ASSETS).catch(e => console.warn('Cache partial fail:', e)))
   );
 });
 
-// ---------- ACTIVATE ----------
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            console.log('Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    }).then(() => self.clients.claim()) // Take control of open pages
+    (async () => {
+      // Delete ALL caches (nuclear option)
+      const keys = await caches.keys();
+      await Promise.all(keys.map(k => caches.delete(k)));
+      
+      // Claim all clients
+      await self.clients.claim();
+    })()
   );
 });
 
-// ---------- FETCH ----------
 self.addEventListener('fetch', (event) => {
   const { request } = event;
-
-  // Skip non-GET and non-http requests
   if (request.method !== 'GET') return;
   if (!request.url.startsWith('http')) return;
 
@@ -63,26 +52,26 @@ self.addEventListener('fetch', (event) => {
   const isCodeFile = /\.(css|js|json)$/i.test(url.pathname);
 
   if (isHTML || isCodeFile) {
-    // NETWORK-FIRST for HTML, CSS, JS (always get fresh)
+    // NETWORK FIRST
     event.respondWith(
-      fetch(request)
-        .then((response) => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
-          return response;
+      fetch(request, { cache: 'no-store' })
+        .then(res => {
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then(c => c.put(request, clone));
+          return res;
         })
-        .catch(() => caches.match(request)) // Fallback to cache if offline
+        .catch(() => caches.match(request))
     );
   } else {
-    // CACHE-FIRST for images, fonts, icons (rarely change)
+    // CACHE FIRST for assets
     event.respondWith(
-      caches.match(request).then((cached) => {
-        return cached || fetch(request).then((response) => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
-          return response;
-        });
-      })
+      caches.match(request).then(cached =>
+        cached || fetch(request).then(res => {
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then(c => c.put(request, clone));
+          return res;
+        })
+      )
     );
   }
 });
