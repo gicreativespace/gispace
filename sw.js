@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v5'; // Bumped to v5 to force clear
+const CACHE_VERSION = 'v8'; // Bumped to v8
 const CACHE_NAME = `gi-space-${CACHE_VERSION}`;
 
 const STATIC_ASSETS = [
@@ -48,26 +48,25 @@ self.addEventListener('fetch', (event) => {
   const isCodeFile = /\.(css|js|json)$/i.test(url.pathname);
 
   if (isHTML || isCodeFile) {
-    // NETWORK FIRST for code (Always gets the new main.js)
+    // 🚨 THE FIX: Append a unique timestamp to force the browser to bypass its own cache
+    const fetchUrl = new URL(request.url);
+    fetchUrl.searchParams.set('_cb', Date.now().toString());
+
     event.respondWith(
-      fetch(request, { cache: 'no-store' })
+      fetch(fetchUrl.toString(), { cache: 'no-store' }) 
         .then(res => {
           const clone = res.clone();
+          // Save to Service Worker cache under the original URL for offline fallback
           caches.open(CACHE_NAME).then(c => c.put(request, clone));
           return res;
         })
-        .catch(() => caches.match(request))
+        .catch(() => caches.match(request)) // Fallback to cache if truly offline
     );
   } else {
-    // CACHE FIRST for images, BUT ONLY CACHE IF IT'S A SUCCESSFUL 200 OK
+    // Cache first for images and fonts (loads instantly)
     event.respondWith(
       caches.match(request).then(cached => {
-        if (cached) return cached;
-        
-        return fetch(request).then(res => {
-          // If the image is missing (404), do NOT cache it!
-          if (!res || res.status !== 200) return res; 
-          
+        return cached || fetch(request).then(res => {
           const clone = res.clone();
           caches.open(CACHE_NAME).then(c => c.put(request, clone));
           return res;
