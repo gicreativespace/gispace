@@ -390,3 +390,214 @@ body.english-mode .footer-links a {
     font-size: 1.05rem;
     letter-spacing: 1px;
 }
+/* ==========================================
+   11. GODARODU CHATBOT PAGE STYLES
+   ========================================== */
+.chatbot-page {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--ivory);
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 800px;
+    height: 80vh;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(6, 26, 43, 0.1);
+    border: 1px solid rgba(201, 164, 92, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 1.5rem 2rem;
+    background: var(--space-blue);
+    color: var(--ivory);
+    border-bottom: 3px solid var(--gold);
+}
+
+.chat-header h2 {
+    font-family: var(--font-telugu-bold);
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+    color: var(--gold);
+}
+
+.chat-header p {
+    font-family: var(--font-telugu);
+    font-size: 1.1rem;
+    color: rgba(247, 242, 232, 0.8);
+}
+
+.godarodu-avatar.large {
+    width: 55px;
+    height: 55px;
+    font-size: 2rem;
+}
+
+/* Chat Messages Area */
+.chat-messages {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: #FAFAFA;
+}
+
+.chat-bubble {
+    max-width: 75%;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    font-family: var(--font-telugu);
+    animation: popIn 0.3s ease forwards;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-bubble.bot {
+    background: #fff;
+    color: var(--river-blue);
+    border: 1px solid rgba(31, 94, 122, 0.1);
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.chat-bubble.user {
+    background: var(--river-blue);
+    color: var(--ivory);
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+    font-family: var(--font-english);
+    font-weight: 600;
+}
+
+.chat-bubble .lang-en {
+    font-family: var(--font-english);
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+/* Chat Links */
+.chat-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--gold);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    transition: color 0.3s ease;
+}
+
+.chat-link:hover {
+    color: var(--river-blue);
+    border-color: var(--river-blue);
+}
+
+/* Quick Replies */
+.quick-replies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 1rem 2rem;
+    background: #FAFAFA;
+}
+
+.quick-reply-btn {
+    background: #fff;
+    border: 1px solid var(--gold);
+    color: var(--river-blue);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-telugu);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.quick-reply-btn:hover {
+    background: var(--gold);
+    color: var(--space-blue);
+    transform: translateY(-2px);
+}
+
+.quick-reply-btn .lang-en {
+    font-family: var(--font-english);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Input Area */
+.chat-input-area {
+    padding: 1rem 2rem;
+    background: #fff;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+#chat-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#chat-input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: 1px solid rgba(31, 94, 122, 0.2);
+    border-radius: 30px;
+    font-family: var(--font-telugu);
+    font-size: 1.1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#chat-input:focus {
+    border-color: var(--gold);
+}
+
+#chat-form button {
+    background: var(--space-blue);
+    color: var(--ivory);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#chat-form button:hover {
+    background: var(--gold);
+    transform: scale(1.05);
+}
+
+/* Mobile Chat Adjustments */
+@media (max-width: 900px) {
+    .chatbot-page { padding-top: 80px; }
+    .chat-container { height: 85vh; border-radius: 0; border: none; }
+    .chat-bubble { max-width: 90%; font-size: 1rem; }
+    .chat-header h2 { font-size: 1.5rem; }
+    .godarodu-avatar.large { width: 45px; height: 45px; font-size: 1.5rem; }
+    .chat-messages, .quick-replies, .chat-input-area { padding: 1rem; }
+}
