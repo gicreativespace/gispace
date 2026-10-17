@@ -1,0 +1,138 @@
+/* ==========================================
+   GI.DEVOTIONAL (AGNI / FIRE) THEME
+   ========================================== */
+
+.devotional-page {
+    --night:#fff9e8;
+    --night2:#fff0c7;
+    --gold:#b87512;
+    --cream:#3b2118;
+    --muted:#725c4b;
+    --line:rgba(177,35,35,.22);
+    --kumkuma:#b4232f;
+    --pale:#fffdf5;
+    
+    background: var(--night);
+    color: var(--cream);
+    font-family: Georgia, "Noto Serif Telugu", serif;
+    line-height: 1.65;
+}
+
+.devotional-page a { color: inherit; text-decoration: none; }
+.dev-wrap { width: min(1160px, 92%); margin: auto; }
+
+/* Hero Section */
+.dev-hero {
+    min-height: 690px; display: flex; align-items: center; position: relative; overflow: hidden;
+    background: 
+        linear-gradient(90deg, rgba(255,249,232,.97) 0%, rgba(255,249,232,.86) 43%, rgba(255,249,232,.22) 100%),
+        linear-gradient(0deg, var(--night), transparent 25%),
+        url('https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1800&q=85');
+    background-size: cover; background-position: center;
+}
+.dev-hero::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 75% 38%, rgba(180,35,47,.10), transparent 33%);
+    pointer-events: none;
+}
+.dev-hero-content {
+    position: relative; z-index: 1; padding: 150px 0 100px; max-width: 720px;
+}
+.dev-hero .eyebrow {
+    font: 11px Arial, sans-serif; letter-spacing: .28em; text-transform: uppercase; color: var(--kumkuma);
+}
+.dev-hero h1 {
+    font: clamp(42px, 7vw, 76px)/1.12 Arial, sans-serif; letter-spacing: .02em;
+    margin: 16px 0 22px; color: #3b2118;
+}
+.dev-hero h1 span {
+    display: block; color: var(--kumkuma); font-size: .58em; letter-spacing: .12em; margin-top: 12px;
+}
+.dev-hero h2 {
+    font-size: clamp(24px, 3.5vw, 38px); font-weight: 400; line-height: 1.45; margin: 0 0 16px;
+    font-family: var(--font-telugu-bold);
+}
+.dev-hero p { max-width: 600px; color: #654b3b; font-size: 16px; font-family: var(--font-telugu); font-size: 1.2rem; }
+.dev-hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.dev-btn {
+    display: inline-block; padding: 12px 19px; border: 1px solid var(--kumkuma);
+    font: 12px Arial, sans-serif; letter-spacing: .04em; color: var(--kumkuma);
+    background: rgba(255,253,245,.72); transition: all 0.3s ease;
+}
+.dev-btn.primary { background: var(--kumkuma); border-color: var(--kumkuma); color: #fff9e8; }
+.dev-btn:hover { filter: brightness(1.08); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(180,35,47,0.15); }
+
+/* Content Sections */
+.section-padding { padding: 78px 0; }
+.section-label { font: 10px Arial, sans-serif; letter-spacing: .25em; color: var(--kumkuma); text-transform: uppercase; }
+.section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 400; margin: 8px 0 12px; font-family: var(--font-telugu-bold); }
+.intro { max-width: 680px; color: var(--muted); margin: 0 0 32px; font-family: var(--font-telugu); font-size: 1.15rem; }
+
+/* Cards Grid */
+.dev-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.dev-card {
+    min-height: 220px; padding: 25px; border: 1px solid var(--line);
+    background: linear-gradient(145deg, #fffdf5, #fff3d1); position: relative; overflow: hidden;
+    box-shadow: 0 8px 24px rgba(108,62,22,.04); transition: transform 0.3s ease;
+}
+.dev-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(108,62,22,.08); }
+.dev-card::after {
+    content: ""; position: absolute; width: 140px; height: 140px; border: 1px solid rgba(180,35,47,.12);
+    border-radius: 50%; right: -55px; bottom: -70px;
+}
+.dev-card .num { font: 11px Arial, sans-serif; color: var(--kumkuma); letter-spacing: .15em; }
+.dev-card h3 { font-size: 1.4rem; font-weight: 400; margin: 12px 0 8px; font-family: var(--font-telugu-bold); }
+.dev-card p { font-size: 1.1rem; color: var(--muted); margin: 0; font-family: var(--font-telugu); }
+
+/* Tour Section */
+.dev-tour { background: var(--night2); border-top: 1px solid rgba(177,35,35,.12); border-bottom: 1px solid rgba(177,35,35,.12); padding: 78px 0; }
+.tour-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 42px; align-items: center; }
+.tour-art {
+    min-height: 330px; border: 1px solid var(--line);
+    background: radial-gradient(ellipse at 50% 30%, rgba(255,218,120,.25), transparent 45%),
+                linear-gradient(180deg, rgba(55,25,18,.03), rgba(55,25,18,.65)),
+                url('https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1000&q=85') center/cover;
+    display: flex; align-items: end; padding: 24px;
+}
+.tour-art span { font: 11px Arial, sans-serif; letter-spacing: .18em; color: #fff3ce; }
+.dev-steps { list-style: none; padding: 0; margin: 22px 0; }
+.dev-steps li { padding: 12px 0; border-bottom: 1px solid var(--line); display: flex; gap: 14px; }
+.dev-steps b { color: var(--kumkuma); font: 12px Arial, sans-serif; padding-top: 5px; }
+.dev-steps strong { font-family: var(--font-telugu-bold); font-size: 1.15rem; }
+.dev-steps small { color: var(--muted); font-size: 0.95rem; font-family: var(--font-telugu); }
+
+/* Journey Section */
+.dev-journey { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 28px; }
+.dev-journey .place { border-top: 1px solid var(--gold); padding: 14px 8px 0; }
+.dev-journey .place strong { display: block; font: 14px Arial, sans-serif; font-family: var(--font-telugu-bold); font-size: 1.1rem; }
+.dev-journey .place small { color: var(--muted); font-size: 12px; }
+
+/* Quote */
+.dev-quote {
+    text-align: center; padding: 70px 20px;
+    background: linear-gradient(120deg, var(--night2), var(--night));
+    border-top: 1px solid var(--line);
+}
+.dev-quote blockquote {
+    font-size: clamp(24px, 4vw, 40px); margin: 0 auto 12px; max-width: 800px; font-weight: 400;
+    font-family: var(--font-telugu-bold); color: var(--kumkuma);
+}
+.dev-quote p { color: var(--kumkuma); font: 11px Arial, sans-serif; letter-spacing: .2em; }
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+    .dev-hero { min-height: 600px; background-position: 60% center; }
+    .dev-cards { grid-template-columns: repeat(2, 1fr); }
+    .tour-layout { grid-template-columns: 1fr; }
+    .tour-art { min-height: 260px; }
+    .dev-journey { grid-template-columns: repeat(2, 1fr); }
+    .dev-hero-content { padding-top: 130px; }
+}
+@media (max-width: 600px) {
+    .dev-cards { grid-template-columns: 1fr; }
+    .dev-card { min-height: 175px; }
+    .dev-hero-content { padding-top: 110px; }
+    .dev-journey { grid-template-columns: 1fr; gap: 15px; }
+    .dev-journey .place { padding: 10px 0 0; }
+    .dev-quote blockquote { font-size: 1.8rem; }
+}
