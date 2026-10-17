@@ -1,7 +1,6 @@
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v5'; // Bumped to v5 to force clear
 const CACHE_NAME = `gi-space-${CACHE_VERSION}`;
 
-// ONLY put files here that ACTUALLY exist right now
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -12,14 +11,12 @@ const STATIC_ASSETS = [
   './css/devotional.css',
   './js/main.js',
   './js/godarodu.js'
-  // Removed missing pages/icons for now so caching doesn't fail
 ];
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then(async (cache) => {
-      // Loop through each file individually so one 404 doesn't break everything
       for (const asset of STATIC_ASSETS) {
         try {
           await cache.add(asset);
@@ -34,7 +31,6 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     (async () => {
-      // Delete ALL old caches
       const keys = await caches.keys();
       await Promise.all(keys.map(k => caches.delete(k)));
       await self.clients.claim();
@@ -52,7 +48,7 @@ self.addEventListener('fetch', (event) => {
   const isCodeFile = /\.(css|js|json)$/i.test(url.pathname);
 
   if (isHTML || isCodeFile) {
-    // NETWORK FIRST (Always get the newest version, bypass old cache)
+    // NETWORK FIRST for code (Always gets the new main.js)
     event.respondWith(
       fetch(request, { cache: 'no-store' })
         .then(res => {
@@ -63,15 +59,20 @@ self.addEventListener('fetch', (event) => {
         .catch(() => caches.match(request))
     );
   } else {
-    // CACHE FIRST for assets (images, fonts)
+    // CACHE FIRST for images, BUT ONLY CACHE IF IT'S A SUCCESSFUL 200 OK
     event.respondWith(
-      caches.match(request).then(cached =>
-        cached || fetch(request).then(res => {
+      caches.match(request).then(cached => {
+        if (cached) return cached;
+        
+        return fetch(request).then(res => {
+          // If the image is missing (404), do NOT cache it!
+          if (!res || res.status !== 200) return res; 
+          
           const clone = res.clone();
           caches.open(CACHE_NAME).then(c => c.put(request, clone));
           return res;
-        })
-      )
+        });
+      })
     );
   }
 });
